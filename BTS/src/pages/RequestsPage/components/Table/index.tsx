@@ -1,10 +1,14 @@
-import { Table, Typography } from "antd";
+import { Table } from "antd";
 import { useTableColumns } from "./constants.tsx";
 import PaginationContainer from "./PaginationContainer";
-import { TableHeader, TextButton } from "@components/index.ts";
-import { DeleteOutlined, ProjectOutlined } from "@ant-design/icons";
+import { IFlightsData } from "../../../../models/clientType.ts";
+import { Dispatch, SetStateAction } from "react";
 
-const CustomTable = () => {
+const CustomTable = ({
+  setSelectedRowElements,
+}: {
+  setSelectedRowElements: Dispatch<SetStateAction<IFlightsData[] | undefined>>;
+}) => {
   const columns = useTableColumns();
 
   return (
@@ -12,23 +16,6 @@ const CustomTable = () => {
       {(props) => {
         return (
           <>
-            <TableHeader>
-              <Typography>
-                <span style={{ fontSize: "24px", fontWeight: "700" }}>
-                  Requests
-                </span>
-              </Typography>
-              <div>
-                <TextButton type="text">
-                  <ProjectOutlined />
-                  Create request
-                </TextButton>
-                <TextButton type="text">
-                  <DeleteOutlined />
-                  Delete
-                </TextButton>
-              </div>
-            </TableHeader>
             <Table
               sticky={true}
               size="small"
@@ -36,7 +23,12 @@ const CustomTable = () => {
               columns={columns}
               showHeader={true}
               dataSource={props.flights?.data || []}
-              rowSelection={{ type: "checkbox" }}
+              rowSelection={{
+                type: "checkbox",
+                onChange: (_, record: IFlightsData[]) => {
+                  setSelectedRowElements(record);
+                },
+              }}
               pagination={{
                 current: props.page,
                 hideOnSinglePage: true,

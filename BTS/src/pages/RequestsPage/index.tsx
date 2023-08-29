@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import CustomTable from "./components/Table";
+import { CustomTableHeader } from "./components/Table/Header";
+import { useState } from "react";
+import { IFlightsData } from "../../models/clientType.ts";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -16,10 +19,13 @@ const Content = styled.div`
   width: 100%;
 `;
 const RequestsPage = () => {
+  const [selectedRowElements, setSelectedRowElements] =
+    useState<IFlightsData[]>();
   return (
     <Container>
       <Content>
-        <CustomTable></CustomTable>
+        <CustomTableHeader selectedRowElements={selectedRowElements} />
+        <CustomTable setSelectedRowElements={setSelectedRowElements} />
       </Content>
     </Container>
   );

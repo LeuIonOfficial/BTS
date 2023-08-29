@@ -30,7 +30,7 @@ export const useHeaderItems = () => {
           <TextButton
             type="text"
             onClick={() => {
-              navigate(routes.authenticated.requests);
+              navigate("/");
             }}
           >
             Sales
@@ -45,7 +45,7 @@ export const useHeaderItems = () => {
           <TextButton
             type="text"
             onClick={() => {
-              navigate(routes.authenticated.requests);
+              navigate("/");
             }}
           >
             Register
@@ -64,6 +64,51 @@ export const useHeaderItems = () => {
             }}
           >
             Agents
+          </TextButton>
+        );
+      },
+    },
+    {
+      name: "regions",
+      content: () => {
+        return (
+          <TextButton
+            type="text"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Regions
+          </TextButton>
+        );
+      },
+    },
+    {
+      name: "airports",
+      content: () => {
+        return (
+          <TextButton
+            type="text"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Airports
+          </TextButton>
+        );
+      },
+    },
+    {
+      name: "export_clients",
+      content: () => {
+        return (
+          <TextButton
+            type="text"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Export Clients
           </TextButton>
         );
       },
