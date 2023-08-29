@@ -1,0 +1,2585 @@
+{
+	"info": {
+		"_postman_id": "f5585e8d-05b5-4725-af92-0cd12f66c26a",
+		"name": "CRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3015159",
+		"_collection_link": "https://blue-trinity-641072.postman.co/workspace/ABC~d4a57487-461f-4fa4-b38c-1d13eb8933c3/collection/3015159-f5585e8d-05b5-4725-af92-0cd12f66c26a?action=share&creator=3015159&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "agent@agent.com12",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwer1234",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwer1234",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "32423423423",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"access_token\", jsonData.access_token); // Update env var - access_token\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "agent@agent.com1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/users/9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwer1234",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwer1234",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "43242342",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "test1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test1@test.com2",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwer12345",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwer12345",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "33",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/users/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/users/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Activate/Deactivate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/activate/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"activate",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Assign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ids[]",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/users/1/bulk-assign",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"bulk-assign"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/clients",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/clients/:clientid",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"clients",
+										":clientid"
+									],
+									"variable": [
+										{
+											"key": "clientid",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "first",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "last",
+											"type": "text"
+										},
+										{
+											"key": "emails[]",
+											"value": "test@test.com",
+											"type": "text"
+										},
+										{
+											"key": "emails[]",
+											"value": "test@test.com1",
+											"type": "text"
+										},
+										{
+											"key": "phones[]",
+											"value": "33333",
+											"type": "text"
+										},
+										{
+											"key": "phones[]",
+											"value": "22222",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/clients",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"clients"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "first_name",
+											"value": "Gicu",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "Boevicu",
+											"type": "text"
+										},
+										{
+											"key": "emails[]",
+											"value": "Gicu@Boevicu.test",
+											"type": "text"
+										},
+										{
+											"key": "emails[]",
+											"value": "Gicu@Boevicu.test",
+											"type": "text"
+										},
+										{
+											"key": "phones[]",
+											"value": "888888",
+											"type": "text"
+										},
+										{
+											"key": "phones[]",
+											"value": "999999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/clients/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"clients",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/clients/12",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"clients",
+										"12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/clients/4/requests",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"clients",
+								"4",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flights",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights?page=2&per_page=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "per_page",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights/:flightId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights",
+										":flightId"
+									],
+									"variable": [
+										{
+											"key": "flightId",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "marketing_source",
+											"value": "Landing Page",
+											"type": "text"
+										},
+										{
+											"key": "ip_address",
+											"value": "18.190.19.13",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_from]",
+											"value": "KIV",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_to]",
+											"value": "FRA",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][departure_date]",
+											"value": "2022-03-03",
+											"type": "text"
+										},
+										{
+											"key": "details[adults]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "details[child]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "details[infants]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "details[direction]",
+											"value": "OW",
+											"type": "text"
+										},
+										{
+											"key": "details[flight_class]",
+											"value": "first",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "tst",
+											"type": "text"
+										},
+										{
+											"key": "emails[]",
+											"value": "kdonnelly@gmail.comcx",
+											"type": "text"
+										},
+										{
+											"key": "phones[]",
+											"value": "3442432",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "client_id",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "marketing_source",
+											"value": "Landing Page",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "details[]",
+											"value": "hello",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "comment",
+											"value": "test test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bulk Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "ids[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "ids[]",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Assign",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ids[]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "ids[]",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/flights/assign/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"flights",
+								"assign",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conversion Single",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/flights/2/conversion",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"flights",
+								"2",
+								"conversion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Remove from Conversion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ids[]",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/flights/conversion",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"flights",
+								"conversion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marketing Sources",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "marketing_source",
+									"value": "Landing Page",
+									"type": "text"
+								},
+								{
+									"key": "ip_address",
+									"value": "18.190.19.13",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][iata_from]",
+									"value": "KIV",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][iata_to]",
+									"value": "FRA",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][departure_date]",
+									"value": "2022-03-03",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][return_date]",
+									"value": "2022-04-04",
+									"type": "text"
+								},
+								{
+									"key": "details[adults]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "details[child]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[infants]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[direction]",
+									"value": "OW",
+									"type": "text"
+								},
+								{
+									"key": "details[flight_class]",
+									"value": "first",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "tst",
+									"type": "text"
+								},
+								{
+									"key": "emails[]",
+									"value": "kdonnelly@gmail.comcx",
+									"type": "text"
+								},
+								{
+									"key": "phones[]",
+									"value": "3442432",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/flights/sources",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"flights",
+								"sources"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offers",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/flights/4/offers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"flights",
+										"4",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/offers/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"offers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "flight_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "dump",
+											"value": "F3 S4 S2",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_from]",
+											"value": "KIV",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_to]",
+											"value": "FRA",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][departure_date]",
+											"value": "2022-03-03",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][return_date]",
+											"value": "2022-04-04",
+											"type": "text"
+										},
+										{
+											"key": "details[adults]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "details[child]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "details[infants]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "revenue",
+											"description": "award, revenue, mix",
+											"type": "text"
+										},
+										{
+											"key": "mix_details[]",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fare_type",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_adult",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_child",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_infant",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/offers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "flight_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "dump",
+											"value": "F3 S4 S2",
+											"description": "award, revenue, mix",
+											"type": "text"
+										},
+										{
+											"key": "comment",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_from]",
+											"value": "KIV",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][iata_to]",
+											"value": "FRA",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][airline_iata]",
+											"value": "B4",
+											"type": "text"
+										},
+										{
+											"key": "details[flights][0][departure_date]",
+											"value": "2022-03-03",
+											"type": "text"
+										},
+										{
+											"key": "details[adults]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "details[child]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "details[infants]",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "revenue",
+											"type": "text"
+										},
+										{
+											"key": "mix_details[]",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "fare_type",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_adult",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_child",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "fare_price_infant",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/offers/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"offers",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/offers/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"offers",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Dump",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dump",
+									"value": "1 UA1021P 17MAY W EWRPTY GK1   320P  737P /E\\n                 2 CM 211Y 17MAY W PTYUIO GK1   936P 1137P /E\\n                 3 CM 210Y 27MAY J UIOPTY GK1   624A  818A /E\\n                 4 UA 727P 27MAY J PTYEWR GK1   915A  336P /E",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/offers/1/dump",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"offers",
+								"1",
+								"dump"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expire Token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/offers/3/expire-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"offers",
+								"3",
+								"expire-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Render HTML",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/offers/3/render",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"offers",
+								"3",
+								"render"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Daily Logs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test1@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "qwe123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "qwe123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/offers/4/logs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"offers",
+								"4",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send PQ (BE to analyze)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "marketing_source",
+									"value": "Landing Page",
+									"type": "text"
+								},
+								{
+									"key": "ip_address",
+									"value": "18.190.19.13",
+									"type": "text"
+								},
+								{
+									"key": "details[0][flights][0][iata_from]",
+									"value": "KIV",
+									"type": "text"
+								},
+								{
+									"key": "details[0][flights][0][iata_to]",
+									"value": "FRA",
+									"type": "text"
+								},
+								{
+									"key": "details[0][flights][0][departure_date]",
+									"value": "2022-03-03",
+									"type": "text"
+								},
+								{
+									"key": "details[0][flights][0][return_date]",
+									"value": "2022-04-04",
+									"type": "text"
+								},
+								{
+									"key": "details[0][adults]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "details[0][child]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[0][infants]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[0][direction]",
+									"value": "OW",
+									"type": "text"
+								},
+								{
+									"key": "details[0][flight_class]",
+									"value": "first",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/offers/4/send-pq/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"offers",
+								"4",
+								"send-pq",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get External URL (Kayak, Award, Air Canada)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "flight_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "dump",
+									"value": "F3 S4 S2",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][iata_from]",
+									"value": "KIV",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][iata_to]",
+									"value": "FRA",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][departure_date]",
+									"value": "2022-03-03",
+									"type": "text"
+								},
+								{
+									"key": "details[flights][0][return_date]",
+									"value": "2022-04-04",
+									"type": "text"
+								},
+								{
+									"key": "details[adults]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "details[child]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "details[infants]",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "revenue",
+									"description": "award, revenue, mix",
+									"type": "text"
+								},
+								{
+									"key": "mix_details[]",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fare_type",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "fare_price_adult",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "fare_price_child",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "fare_price_infant",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/test",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Index",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/sales",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "test1@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "qwe123",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "qwe123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/sales/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "insurance[]",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "commission[]",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "passengers[]",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/offers/1/sale",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"offers",
+										"1",
+										"sale"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "insurance[]",
+											"value": "testwa",
+											"type": "text"
+										},
+										{
+											"key": "commission[]",
+											"value": "testwa",
+											"type": "text"
+										},
+										{
+											"key": "tips",
+											"value": "222",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/sales/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "insurance[]",
+											"value": "testwa",
+											"type": "text"
+										},
+										{
+											"key": "commission[]",
+											"value": "testwa",
+											"type": "text"
+										},
+										{
+											"key": "tips",
+											"value": "222",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/sales/7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sales",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reject",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/sales/1/reject",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sales",
+								"1",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Airports",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/airports?query=lah",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"airports"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "lah"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact Us",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0432434",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "fsasdaodbfwur ejdqwdasiudhqwu dawodasdjsandh23endjdada",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/contact",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

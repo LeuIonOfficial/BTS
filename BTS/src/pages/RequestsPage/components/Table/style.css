@@ -1,0 +1,14 @@
+.hover_icon {
+  cursor: pointer;
+  visibility: hidden;
+  color: #059e9b;
+}
+
+.ant-table-row:hover .hover_icon {
+  visibility: visible !important;
+}
+
+.request_column {
+  width: 20px;
+  white-space: pre-wrap;
+}
