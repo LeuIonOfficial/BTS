@@ -2,7 +2,9 @@ import styled from "styled-components";
 import CustomTable from "./components/Table";
 import { CustomTableHeader } from "./components/Table/Header";
 import { useState } from "react";
-import { IFlightsData } from "../../models/clientType.ts";
+import { IFlightsData } from "@models/clientType.ts";
+
+import SubHeader from "./components/Table/SubHeader";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -25,6 +27,7 @@ const RequestsPage = () => {
     <Container>
       <Content>
         <CustomTableHeader selectedRowElements={selectedRowElements} />
+        <SubHeader />
         <CustomTable setSelectedRowElements={setSelectedRowElements} />
       </Content>
     </Container>

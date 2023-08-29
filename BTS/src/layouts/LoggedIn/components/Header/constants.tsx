@@ -4,6 +4,7 @@ import { MenuProps } from "antd";
 import routes from "@routes/routes.ts";
 import { TextButton } from "@components/index.ts";
 import { Api } from "../../../../api";
+import { LogoutOutlined } from "@ant-design/icons";
 
 export const useHeaderItems = () => {
   const navigate = useNavigate();
@@ -127,7 +128,8 @@ export const useDropdownItems = (): MenuProps["items"] => {
             navigate("/login");
           }}
         >
-          Logout
+          <LogoutOutlined color="#059e9b" />
+          <span style={{ marginLeft: "10px" }}>Logout</span>
         </a>
       ),
       key: "0",

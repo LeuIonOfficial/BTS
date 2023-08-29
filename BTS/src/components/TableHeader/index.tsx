@@ -6,7 +6,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 20px;
+  margin: 20px 20px 0 20px;
 `;
 
 const TableHeader = ({ children }: { children: ReactNode }) => {
