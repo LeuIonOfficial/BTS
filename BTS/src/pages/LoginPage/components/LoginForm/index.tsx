@@ -30,9 +30,9 @@ const LoginForm: FC = () => {
       autoComplete="off"
       onFinish={handleSubmitForm}
     >
-      {items.map((item) => {
+      {items.map((item, index) => {
         return (
-          <Form.Item name={item.name} rules={item.rules}>
+          <Form.Item name={item.name} rules={item.rules} key={index}>
             {item.content}
           </Form.Item>
         );

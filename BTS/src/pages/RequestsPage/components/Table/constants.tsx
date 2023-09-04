@@ -80,8 +80,12 @@ export const useTableColumns = () => {
       key: "9",
       title: "Client Email",
       render: (_: unknown, record: IFlightsData) => {
-        return record.client.emails.map((el) => {
-          return <Tag color="green">{el}</Tag>;
+        return record.client.emails.map((el, index) => {
+          return (
+            <Tag color="green" key={index}>
+              {el}
+            </Tag>
+          );
         });
       },
       width: "18%",
@@ -90,8 +94,12 @@ export const useTableColumns = () => {
       key: "10",
       title: "Client Phone",
       render: (_: unknown, record: IFlightsData) => {
-        return record.client.phones.map((el) => {
-          return <Tag color="geekblue">{el}</Tag>;
+        return record.client.phones.map((el, index) => {
+          return (
+            <Tag color="geekblue" key={index}>
+              {el}
+            </Tag>
+          );
         });
       },
     },

@@ -43,8 +43,8 @@ const CustomHeader = () => {
     <StyledHeader>
       <div>
         <div>
-          {items.map((item) => {
-            return item.content();
+          {items.map((item, index) => {
+            return <span key={index}>{item.content()}</span>;
           })}
         </div>
         <div>

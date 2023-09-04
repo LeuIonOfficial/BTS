@@ -9,11 +9,11 @@ const StyledDivider = styled(Divider)`
 `;
 
 const Container = styled.div`
-  align-items: center;
+  //align-items: center;
   display: flex;
   justify-content: center;
   padding: 1rem;
-  min-height: 100vh;
+  min-height: 92vh;
   background-color: #f5f5f5;
 `;
 

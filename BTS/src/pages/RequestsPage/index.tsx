@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import CustomTable from "./components/Table";
-import { CustomTableHeader } from "./components/Table/Header";
 import { useState } from "react";
+
+import { Header, RequestDrawer, SubHeader, Table } from "./components/";
 import { IFlightsData } from "@models/clientType.ts";
 
-import SubHeader from "./components/Table/SubHeader";
-
 const Container = styled.div`
-  min-height: 100vh;
+  height: 100%;
   margin: 1rem;
-  max-width: 1200px;
   width: 100%;
   background-color: #fff;
 `;
@@ -23,12 +20,17 @@ const Content = styled.div`
 const RequestsPage = () => {
   const [selectedRowElements, setSelectedRowElements] =
     useState<IFlightsData[]>();
+  const [drawerState, setDrawerState] = useState<boolean>(false);
   return (
     <Container>
       <Content>
-        <CustomTableHeader selectedRowElements={selectedRowElements} />
+        <Header
+          selectedRowElements={selectedRowElements}
+          setDrawerState={setDrawerState}
+        />
         <SubHeader />
-        <CustomTable setSelectedRowElements={setSelectedRowElements} />
+        <RequestDrawer open={drawerState} setDrawerState={setDrawerState} />
+        <Table setSelectedRowElements={setSelectedRowElements} />
       </Content>
     </Container>
   );

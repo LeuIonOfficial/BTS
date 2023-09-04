@@ -7,13 +7,15 @@ import {
 } from "@ant-design/icons";
 import { IFlightsData } from "@models/clientType.ts";
 import { useFiltersItems } from "./constants.tsx";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import FilterModal from "./FilterModal";
 
-export const CustomTableHeader = ({
+const CustomTableHeader = ({
   selectedRowElements,
+  setDrawerState,
 }: {
   selectedRowElements: IFlightsData[] | undefined;
+  setDrawerState: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [modalState, setModalState] = useState<string | undefined>();
   const filters = useFiltersItems(setModalState);
@@ -30,7 +32,7 @@ export const CustomTableHeader = ({
           </TextButton>
         </Dropdown>
         <FilterModal modalState={modalState} setModalState={setModalState} />
-        <TextButton type="text">
+        <TextButton type="text" onClick={() => setDrawerState(true)}>
           <ProjectOutlined />
           Create request
         </TextButton>
@@ -42,3 +44,5 @@ export const CustomTableHeader = ({
     </TableHeader>
   );
 };
+
+export default CustomTableHeader;
