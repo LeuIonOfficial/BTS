@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import { useTableColumns } from "./constants.tsx";
-import PaginationContainer from "./PaginationContainer";
+import PaginationContainer from "./components/PaginationContainer";
 import { IFlightsData } from "@models/clientType.ts";
 import { Dispatch, SetStateAction } from "react";
 
@@ -30,12 +30,12 @@ const CustomTable = ({
                 },
               }}
               pagination={{
+                position: ["bottomLeft"],
                 current: props.page,
                 hideOnSinglePage: true,
                 pageSize: props.flights?.meta?.per_page,
                 total: props.flights?.meta?.total,
                 onChange: (page) => {
-                  console.log(page);
                   props.setPage(page);
                 },
               }}

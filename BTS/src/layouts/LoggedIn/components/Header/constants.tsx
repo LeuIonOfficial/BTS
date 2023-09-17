@@ -31,7 +31,7 @@ export const useHeaderItems = () => {
           <TextButton
             type="text"
             onClick={() => {
-              navigate("/");
+              navigate(routes.authenticated.sales);
             }}
           >
             Sales

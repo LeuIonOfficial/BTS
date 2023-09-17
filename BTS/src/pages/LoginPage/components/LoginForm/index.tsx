@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Form } from "antd";
+import { FC, useState } from "react";
+import { Form, message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import useFormItems from "./constants.tsx";
@@ -11,15 +11,21 @@ const LoginForm: FC = () => {
   const items = useFormItems();
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
+  const [buttonStatus, setButtonStatus] = useState<boolean>(false);
 
   const handleSubmitForm = (values: { email: string; password: string }) => {
-    Api.auth.login(values).then((res) => {
-      if (res.success) {
+    setButtonStatus(true);
+    const login = async () => {
+      const response = await Api.auth.login(values);
+      if (response.success) {
         navigate(routes.authenticated.dashboard);
       } else {
-        console.log("error");
+        messageApi.open({ type: "error", content: response.message });
+        setButtonStatus(false);
       }
-    });
+    };
+    login();
   };
 
   return (
@@ -30,6 +36,7 @@ const LoginForm: FC = () => {
       autoComplete="off"
       onFinish={handleSubmitForm}
     >
+      {contextHolder}
       {items.map((item, index) => {
         return (
           <Form.Item name={item.name} rules={item.rules} key={index}>
@@ -38,7 +45,7 @@ const LoginForm: FC = () => {
         );
       })}
       <Form.Item>
-        <SubmitButton type="primary" htmlType="submit">
+        <SubmitButton type="primary" htmlType="submit" disabled={buttonStatus}>
           Submit
         </SubmitButton>
       </Form.Item>

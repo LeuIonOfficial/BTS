@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.tsx";
 import queryConfig from "./api/reactQuery";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryConfig}>

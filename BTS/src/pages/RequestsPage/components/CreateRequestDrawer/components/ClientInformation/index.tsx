@@ -1,8 +1,9 @@
-import { Col, Input, Row } from "antd";
+import { Col, Input, Row, Select } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import FormList from "antd/es/form/FormList";
 import { DeleteOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
+import { marketingSource } from "../../../../../../helpers/MarketingSource";
 
 export const rules = [
   {
@@ -126,7 +127,9 @@ const ClientInformation = () => {
             name="marketing_source"
             rules={rules}
           >
-            <Input />
+            <Select
+              options={marketingSource.map((el) => ({ name: el, value: el }))}
+            />
           </FormItem>
         </Col>
         <Col span={12}>

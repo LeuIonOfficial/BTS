@@ -1,4 +1,4 @@
-import { IFlightsData } from "../../../../models/clientType.ts";
+import { IFlightsData } from "@models/clientType.ts";
 import { formatDate } from "../../../../helpers/FormatDate/formatDate.ts";
 import { DeleteOutlined } from "@ant-design/icons";
 import "./style.css";

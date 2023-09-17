@@ -6,6 +6,7 @@ const routes = {
     dashboard: authenticatedRoot + "/dashboard",
     requests: authenticatedRoot + "/requests",
     agents: authenticatedRoot + "/agents",
+    sales: authenticatedRoot + "/sales",
   },
   login: "/login",
 };

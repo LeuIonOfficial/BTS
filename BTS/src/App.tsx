@@ -1,9 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { AgentsPage, LoginPage, RequestsPage } from "./pages";
+import { AgentsPage, LoginPage, RequestsPage, SalesPage } from "./pages";
 import routes from "./routes/routes.ts";
 import { AuthLayout } from "./layouts";
 import DashboardPage from "./pages/DashboardPage";
+import "./index.css";
 
 const DashboardRedirect = () => {
   return <Navigate to={routes.authenticated.dashboard} />;
@@ -24,6 +25,7 @@ const App = () => {
           path={routes.authenticated.requests}
           element={<RequestsPage />}
         />
+        <Route path={routes.authenticated.sales} element={<SalesPage />} />
         <Route path={routes.authenticated.agents} element={<AgentsPage />} />
       </Route>
     </Routes>

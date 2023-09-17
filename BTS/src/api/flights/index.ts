@@ -10,7 +10,6 @@ export class Flights {
 
   async postFlight(id: string | undefined, values: IPostFlightsType) {
     const data = { ...values, user_id: id };
-    console.log("data:", data);
     return post({
       apiUrl: `/api/flights`,
       body: data,

@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import { Button, Drawer, Form, Space } from "antd";
 import ClientInformation from "./components/ClientInformation";
 import FlightInformation from "./components/FlightInformation";
 import { SubmitButton } from "@components/index.ts";
 import { useForm } from "antd/es/form/Form";
-// import { usePostFlight } from "@hooks/index.ts";
+import { usePostFlight } from "@hooks/index.ts";
 import { IPostFlightsType } from "@models/postFlightsType.ts";
-// import { UserContext } from "@store/index.ts";
+import { UserContext } from "@store/index.ts";
 
 const CreateRequest = ({
   open,
@@ -16,8 +16,8 @@ const CreateRequest = ({
   setDrawerState: Dispatch<SetStateAction<boolean>>;
 }) => {
   const [form] = useForm();
-  // const { createFlightRequest } = usePostFlight();
-  // const user = useContext(UserContext);
+  const { createFlightRequest } = usePostFlight();
+  const user = useContext(UserContext);
 
   return (
     <Drawer
@@ -77,8 +77,7 @@ const CreateRequest = ({
           ],
         }}
         onFinish={(values: IPostFlightsType) => {
-          console.log(values);
-          // createFlightRequest({ id: user?.id.toString(), form: values });
+          createFlightRequest({ id: user?.id.toString(), form: values });
         }}
       >
         <ClientInformation />

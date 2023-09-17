@@ -1,7 +1,7 @@
 import {
   RequestHandlerParams,
   RequestParameters,
-} from "../../models/requestType.ts";
+} from "@models/requestType.ts";
 import axios, { Method } from "axios";
 
 const request = async ({ apiUrl, opts }: RequestParameters) => {

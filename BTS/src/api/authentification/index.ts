@@ -1,5 +1,5 @@
 import { get, post } from "../request";
-import { LoginData, LoginResult } from "../../models/authentificationType.ts";
+import { LoginData, LoginResult } from "@models/authentificationType.ts";
 
 const storageKeyAccessToken = "ccpx_access_token";
 export class authApi {
@@ -27,11 +27,13 @@ export class authApi {
       return {
         success: true,
         accessToken: response.data["access_token"],
+        message: response.data.message,
       };
     }
     return {
       success: false,
       accessToken: response.data["error"],
+      message: response.data.message,
     };
   }
   async logout() {
