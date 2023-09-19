@@ -36,7 +36,6 @@ const PaginationContainer: FC<{
 }> = ({ children }) => {
   const [page, setPage] = useState<number>(1);
   const { flights } = useGetFlights(page, 10);
-  console.log(flights);
   return children({ page, setPage, flights });
 };
 

@@ -40,8 +40,8 @@ const CustomTable = ({
                 },
               }}
               rowKey="id"
-              style={{ margin: "0 10px" }}
-            ></Table>
+              className="mx-3"
+            />
           </>
         );
       }}

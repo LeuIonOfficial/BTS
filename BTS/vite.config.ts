@@ -12,6 +12,8 @@ export default defineConfig({
       "@store": path.resolve(__dirname, "./src/store"),
       "@components": path.resolve(__dirname, "./src/components"),
       "@models": path.resolve(__dirname, "./src/models"),
+      "@api": path.resolve(__dirname, "./src/api"),
+      "@assets": path.resolve(__dirname, "./src/assets"),
     },
   },
   plugins: [react()],

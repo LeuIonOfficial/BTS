@@ -3,7 +3,7 @@ import { MenuProps } from "antd";
 
 import routes from "@routes/routes.ts";
 import { TextButton } from "@components/index.ts";
-import { Api } from "../../../../api";
+import { Api } from "@api/index.ts";
 import { LogoutOutlined } from "@ant-design/icons";
 
 export const useHeaderItems = () => {
@@ -18,6 +18,7 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate(routes.authenticated.requests);
             }}
+            className="text-[16px]"
           >
             Requests
           </TextButton>
@@ -33,23 +34,9 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate(routes.authenticated.sales);
             }}
+            className="text-[16px]"
           >
             Sales
-          </TextButton>
-        );
-      },
-    },
-    {
-      name: "register",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Register
           </TextButton>
         );
       },
@@ -63,6 +50,7 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate(routes.authenticated.agents);
             }}
+            className="text-[16px]"
           >
             Agents
           </TextButton>
@@ -78,6 +66,7 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate("/");
             }}
+            className="text-[16px]"
           >
             Regions
           </TextButton>
@@ -93,6 +82,7 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate("/");
             }}
+            className="text-[16px]"
           >
             Airports
           </TextButton>
@@ -108,6 +98,7 @@ export const useHeaderItems = () => {
             onClick={() => {
               navigate("/");
             }}
+            className="text-[16px]"
           >
             Export Clients
           </TextButton>
@@ -122,15 +113,16 @@ export const useDropdownItems = (): MenuProps["items"] => {
   return [
     {
       label: (
-        <a
+        <span
           onClick={() => {
             Api.auth.logout();
             navigate("/login");
           }}
+          className="flex items-center justify-evenly"
         >
-          <LogoutOutlined color="#059e9b" />
-          <span style={{ marginLeft: "10px" }}>Logout</span>
-        </a>
+          <LogoutOutlined className="text-greenMain text-[16px]" />
+          <span className="text-[16px] ml-[10px]">Logout</span>
+        </span>
       ),
       key: "0",
     },

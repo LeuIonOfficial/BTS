@@ -34,6 +34,7 @@ const CustomTable = () => {
         return (
           <Table
             sticky={true}
+            rowSelection={{ type: "checkbox" }}
             size="small"
             tableLayout="fixed"
             dataSource={props.sales?.data || []}
@@ -48,7 +49,7 @@ const CustomTable = () => {
               },
             }}
             rowKey="id"
-            style={{ margin: "0 10px" }}
+            className="mx-3"
           />
         );
       }}

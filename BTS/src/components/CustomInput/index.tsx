@@ -18,11 +18,11 @@ const CustomInput = ({
 }: InputProps & { label: string }) => {
   return (
     <Container>
-      <Label>{label}</Label>
+      <Label className="text-[14px]">{label}</Label>
       {type === "password" ? (
-        <Input.Password {...props} />
+        <Input.Password {...props} className="text-[14px]" />
       ) : (
-        <Input {...props} />
+        <Input {...props} className="text-[14px]" />
       )}
     </Container>
   );

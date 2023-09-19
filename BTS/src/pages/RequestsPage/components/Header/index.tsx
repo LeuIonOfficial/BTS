@@ -1,13 +1,16 @@
 import { TableHeader } from "@components/index.ts";
 import { Typography } from "antd";
+import SalesFilter from "../RequestsFilter";
 
 const CustomTableHeader = () => {
   return (
     <TableHeader>
       <Typography>
-        <span className="text-lg font-bold">Requests</span>
+        <span className="text-2xl font-bold">Requests</span>
       </Typography>
-      <div></div>
+      <div>
+        <SalesFilter />
+      </div>
     </TableHeader>
   );
 };

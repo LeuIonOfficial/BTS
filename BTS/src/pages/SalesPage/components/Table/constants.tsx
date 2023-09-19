@@ -15,7 +15,6 @@ const useTableColumns = () => {
       key: "2",
       title: "Lead ID",
       render: (_: unknown, record: ISalesData) => {
-        console.log(record);
         return <span>{record.id}</span>;
       },
       width: "4%",

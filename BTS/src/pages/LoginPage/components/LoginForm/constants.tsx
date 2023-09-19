@@ -7,10 +7,11 @@ const useFormItems = () => {
       name: "email",
       content: (
         <CustomInput
-          label="Email"
+          // className="h-9 text-[18px]"
+          label="E-mail"
           type="email"
           prefix={<UserOutlined />}
-          value=""
+          placeholder="example@gmail.com"
         />
       ),
       rules: [
@@ -24,9 +25,11 @@ const useFormItems = () => {
       name: "password",
       content: (
         <CustomInput
+          // className="h-9 text-[18px]"
           label="Password"
           type="password"
           prefix={<LockOutlined />}
+          placeholder="*********"
         />
       ),
       rules: [
