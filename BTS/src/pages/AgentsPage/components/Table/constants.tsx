@@ -36,7 +36,6 @@ export const useColumns = () => {
       key: "6",
       title: "Is Active",
       render: (_: unknown, record: IUser) => {
-        console.log(record);
         return (
           <Switch checked={!record.is_deactivated} className="text-greenMain" />
         );

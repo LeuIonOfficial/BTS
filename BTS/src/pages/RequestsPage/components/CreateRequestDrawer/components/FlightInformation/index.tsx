@@ -21,9 +21,9 @@ const FlightInformation = () => {
                           label={
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
+                              width="30"
+                              height="30"
+                              viewBox="0 0 25 25"
                             >
                               <path
                                 fill="currentColor"
@@ -41,7 +41,9 @@ const FlightInformation = () => {
                                 alignItems: "center",
                               }}
                             >
-                              <h2 style={{ margin: 0 }}>Flight Details</h2>
+                              <h2 className="m-0 font-bold text-xl">
+                                Flight Details
+                              </h2>
                               <DeleteOutlined
                                 style={{
                                   color: "#059e9b",
@@ -59,7 +61,9 @@ const FlightInformation = () => {
                                 alignItems: "center",
                               }}
                             >
-                              <h2 style={{ margin: 0 }}>Flight Details</h2>
+                              <h2 className="m-0 font-bold text-xl">
+                                Flight Details
+                              </h2>
                               <PlusOutlined
                                 style={{
                                   color: "#059e9b",

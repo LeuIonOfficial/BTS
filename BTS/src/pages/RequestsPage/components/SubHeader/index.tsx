@@ -7,7 +7,7 @@ import {
 
 const SubHeader = () => {
   return (
-    <Row gutter={16} style={{ margin: "10px" }}>
+    <Row gutter={16} className="m-[10px]">
       <Col span={8}>
         <Card bordered={false} hoverable={true}>
           <Statistic

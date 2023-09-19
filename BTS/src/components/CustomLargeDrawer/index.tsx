@@ -15,7 +15,7 @@ const CustomLargeDrawer = ({
       open={open}
       closable={true}
       onClose={() => setDrawerState(false)}
-      style={{ width: "1200px" }}
+      width="1000px"
     >
       {children}
     </Drawer>

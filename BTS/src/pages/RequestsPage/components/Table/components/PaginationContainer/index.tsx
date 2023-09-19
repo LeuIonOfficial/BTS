@@ -1,29 +1,7 @@
 import { Dispatch, FC, ReactElement, SetStateAction, useState } from "react";
 import { useGetFlights } from "@hooks/index.ts";
 import { IFlightsData } from "@models/clientType.ts";
-
-export interface IServerDataResponse<T> {
-  data: T[];
-  links: {
-    first: string;
-    last: string;
-    next: string;
-  };
-  meta: {
-    current_page: number;
-    from: number;
-    last_page: number;
-    path: string;
-    per_page: number;
-    to: number;
-    total: number;
-    links: {
-      url: string;
-      label: string;
-      active: boolean;
-    }[];
-  };
-}
+import { IServerDataResponse } from "@models/serverDataResponse.ts";
 
 type PaginationProps = {
   page: number;

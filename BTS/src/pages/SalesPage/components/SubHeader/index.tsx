@@ -3,7 +3,7 @@ import { ArrowUpOutlined, BellOutlined } from "@ant-design/icons";
 
 const SalesSubHeader = () => {
   return (
-    <Row gutter={16} style={{ margin: "10px" }}>
+    <Row gutter={16} className="m-[10px]">
       <Col span={12}>
         <Card bordered={false} hoverable={true}>
           <Statistic

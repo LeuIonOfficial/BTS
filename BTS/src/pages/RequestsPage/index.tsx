@@ -19,29 +19,24 @@ const RequestsPage = () => {
       <CustomFloatButton
         type="primary"
         shape="circle"
-        style={{
-          width: "50px",
-          height: "50px",
-        }}
+        className="w-[50px] h-[50px]"
         onClick={() => {
           setDrawerState(true);
         }}
         icon={
           <div className="flex items-center justify-center ">
-            <PlusOutlined style={{ fontSize: "20px", margin: 0, padding: 0 }} />
+            <PlusOutlined className="text-[20px] m-0 p-0" />
           </div>
         }
       />
       {!!selectedRowElements?.length && (
         <CustomFloatButton
-          style={{ bottom: 110, width: "50px", height: "50px" }}
+          className="bottom-[110px] w-[50px] h-[50px]"
           type="primary"
           shape="circle"
           icon={
             <div className="flex items-center justify-center ">
-              <DeleteOutlined
-                style={{ fontSize: "20px", margin: 0, padding: 0 }}
-              />
+              <DeleteOutlined className="text-[20px] m-0 p-0" />
             </div>
           }
         />

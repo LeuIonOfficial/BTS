@@ -1,4 +1,4 @@
-import { CustomInput } from "../../../../components";
+import CustomInput from "@components/CustomInput";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 const useFormItems = () => {
@@ -7,7 +7,6 @@ const useFormItems = () => {
       name: "email",
       content: (
         <CustomInput
-          // className="h-9 text-[18px]"
           label="E-mail"
           type="email"
           prefix={<UserOutlined />}
@@ -25,7 +24,6 @@ const useFormItems = () => {
       name: "password",
       content: (
         <CustomInput
-          // className="h-9 text-[18px]"
           label="Password"
           type="password"
           prefix={<LockOutlined />}

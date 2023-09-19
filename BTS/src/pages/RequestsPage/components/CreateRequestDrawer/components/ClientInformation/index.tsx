@@ -3,7 +3,7 @@ import FormItem from "antd/es/form/FormItem";
 import FormList from "antd/es/form/FormList";
 import { DeleteOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
-import { marketingSource } from "../../../../../../helpers/MarketingSource";
+import { marketingSource } from "@helpers/MarketingSource";
 
 export const rules = [
   {
@@ -17,8 +17,12 @@ const ClientInformation = () => {
     <>
       <Row>
         <Col span={12}>
-          <FormItem label={<UserOutlined />}>
-            <h2 style={{ margin: 0 }}>Personal Info</h2>
+          <FormItem
+            label={
+              <UserOutlined style={{ fontSize: "25px", fontWeight: 700 }} />
+            }
+          >
+            <h2 className="m-0 font-bold text-xl">Personal Info</h2>
           </FormItem>
         </Col>
       </Row>
