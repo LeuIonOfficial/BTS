@@ -1,4 +1,4 @@
-export interface IServerDataResponse<T> {
+export interface ServerResponseType<T> {
   data: T[];
   links: {
     first: string;

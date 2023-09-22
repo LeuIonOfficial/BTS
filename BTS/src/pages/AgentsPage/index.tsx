@@ -3,19 +3,29 @@ import { useState } from "react";
 
 import { Table, Header, CreateUserDrawer } from "./components";
 import { CustomFloatButton } from "@components/CustomFloatButton";
+import { IUser } from "@models/clientType.ts";
 
 const AgentsPage = () => {
-  const [isModal, setIsModal] = useState<boolean>(false);
+  const [drawerState, setDrawerState] = useState<
+    "create" | "update" | "closed"
+  >("closed");
+  const [userToUpdate, setUserToUpdate] = useState<IUser | undefined>(
+    undefined,
+  );
+
   return (
     <div className="w-full h-full bg-white">
       <Header />
-      <Table />
+      <Table
+        setDrawerState={setDrawerState}
+        setUserToUpdate={setUserToUpdate}
+      />
       <CustomFloatButton
         type="primary"
         shape="circle"
         className="w-[50px] h-[50px]"
         onClick={() => {
-          setIsModal(true);
+          setDrawerState("create");
         }}
         icon={
           <div className="flex items-center justify-center ">
@@ -23,9 +33,12 @@ const AgentsPage = () => {
           </div>
         }
       />
-      {isModal && (
-        <CreateUserDrawer isModal={isModal} setIsModal={setIsModal} />
-      )}
+
+      <CreateUserDrawer
+        drawerState={drawerState}
+        setDrawerState={setDrawerState}
+        userToUpdate={userToUpdate}
+      />
     </div>
   );
 };

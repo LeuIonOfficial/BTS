@@ -1,4 +1,4 @@
-import { get, post } from "../request";
+import { $api } from "../request";
 import { LoginData, LoginResult } from "@models/authentificationType.ts";
 
 const storageKeyAccessToken = "ccpx_access_token";
@@ -10,16 +10,9 @@ export class authApi {
   }
 
   async login(data: LoginData): Promise<LoginResult> {
-    let response = await post({
-      apiUrl: "/api/auth/login",
-      body: {
-        // grant_type: grantType,
-        email: data.email,
-        password: data.password,
-      },
-      otherOpts: {
-        Authorization: this.accessToken,
-      },
+    let response = await $api.post("/api/auth/login", {
+      email: data.email,
+      password: data.password,
     });
     if (response.status === 200) {
       this.accessToken = response.data["access_token"];
@@ -37,12 +30,7 @@ export class authApi {
     };
   }
   async logout() {
-    await get({
-      apiUrl: "/api/logout",
-      otherOpts: {
-        Authorization: this.accessToken,
-      },
-    });
+    await $api.get("/api/logout");
     this.accessToken = "";
     localStorage.removeItem(storageKeyAccessToken);
   }

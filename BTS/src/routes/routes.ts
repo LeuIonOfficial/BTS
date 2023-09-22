@@ -3,12 +3,13 @@ const authenticatedRoot = "/u";
 const routes = {
   authenticated: {
     root: authenticatedRoot,
-    dashboard: authenticatedRoot + "/dashboard",
     requests: authenticatedRoot + "/requests",
-    agents: authenticatedRoot + "/agents",
+    agents: authenticatedRoot + "/agents/:id?",
     sales: authenticatedRoot + "/sales",
   },
   login: "/login",
+  notFound: "*",
+  badRequest: "/400",
 };
 
 export default routes;

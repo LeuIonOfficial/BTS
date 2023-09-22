@@ -1,18 +1,41 @@
-import { get, post } from "../request";
-import { IPostFlightsType } from "@models/postFlightsType.ts";
+import { AxiosResponse } from "axios";
+
+import { $api } from "../request";
+import { PostFlightType } from "@models/flights.ts";
+import { GetFlightsParamsType, GetFlightsType } from "@models/flights.ts";
+import { ServerResponseType } from "@models/serverResponse.ts";
+import { notification } from "antd";
+import { AxiosError } from "axios";
+
 export class Flights {
-  async getFlights(page: number, perPage: number) {
-    let response = await get({
-      apiUrl: `/api/flights?page=${page}&per_page=${perPage}`,
+  async getFlights(
+    params: GetFlightsParamsType,
+  ): Promise<AxiosResponse<ServerResponseType<GetFlightsType>>> {
+    return await $api.get("/api/flights", {
+      params: {
+        ...params,
+      },
     });
-    return response.data;
   }
 
-  async postFlight(id: string | undefined, values: IPostFlightsType) {
-    const data = { ...values, user_id: id };
-    return post({
-      apiUrl: `/api/flights`,
-      body: data,
-    });
+  async postFlight(data: PostFlightType) {
+    try {
+      const response = await $api.post("/api/flights", data);
+      if (response.status >= 200 && response.status < 300) {
+        notification.success({
+          message: `Flight request successfully created`,
+        });
+      }
+      return response;
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        console.log(e.message);
+        notification.error({
+          message: `Flight request failed: ${e.message}`,
+        });
+      } else {
+        console.log(e);
+      }
+    }
   }
 }

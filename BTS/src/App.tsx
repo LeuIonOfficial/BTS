@@ -1,6 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { AgentsPage, LoginPage, RequestsPage, SalesPage } from "./pages";
+import {
+  AgentsPage,
+  LoginPage,
+  NotFound,
+  RequestsPage,
+  SalesPage,
+} from "./pages";
 import routes from "./routes/routes.ts";
 import { AuthLayout } from "./layouts";
 import "./index.css";
@@ -23,6 +29,7 @@ const App = () => {
         <Route path={routes.authenticated.sales} element={<SalesPage />} />
         <Route path={routes.authenticated.agents} element={<AgentsPage />} />
       </Route>
+      <Route path={routes.notFound} element={<NotFound />} />
     </Routes>
   );
 };

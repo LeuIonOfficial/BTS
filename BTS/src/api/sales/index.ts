@@ -1,10 +1,11 @@
-import get from "../request";
+import { $api } from "../request";
 
 export class Sales {
-  async getSales(page: number, perPage: number) {
-    let response = await get({
-      apiUrl: `/api/sales?page=${page}&per_page=${perPage}`,
+  async getSales(params: { page: number; per_page: number }) {
+    return $api.get("/api/sales", {
+      params: {
+        ...params,
+      },
     });
-    return response.data;
   }
 }

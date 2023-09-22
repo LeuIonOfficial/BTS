@@ -1,12 +1,12 @@
 import { Dispatch, FC, ReactElement, SetStateAction, useState } from "react";
 import useGetUsers from "@hooks/useGetUsers.ts";
 import { IUser } from "@models/clientType.ts";
-import { IServerDataResponse } from "../../../../../RequestsPage/components/Table/components/PaginationContainer";
+import { ServerResponseType } from "@models/serverResponse.ts";
 
 type PaginationProps = {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
-  users: IServerDataResponse<IUser>;
+  users: ServerResponseType<IUser>;
 };
 
 const PaginationContainer: FC<{

@@ -2,7 +2,12 @@ import { Switch } from "antd";
 import { IUser } from "@models/clientType.ts";
 import { EditOutlined } from "@ant-design/icons";
 
-export const useColumns = () => {
+import { Dispatch, SetStateAction } from "react";
+
+export const useColumns = (
+  setDrawerState: Dispatch<SetStateAction<"create" | "update" | "closed">>,
+  setUserToUpdate: Dispatch<SetStateAction<IUser | undefined>>,
+) => {
   return [
     {
       key: "1",
@@ -27,8 +32,16 @@ export const useColumns = () => {
     {
       key: "5",
       title: "Edit",
-      render: () => {
-        return <EditOutlined className="text-greenMain text-xl" />;
+      render: (_: unknown, record: IUser) => {
+        return (
+          <EditOutlined
+            className="text-greenMain text-xl"
+            onClick={() => {
+              setDrawerState("update");
+              setUserToUpdate(record);
+            }}
+          />
+        );
       },
       width: "10%",
     },

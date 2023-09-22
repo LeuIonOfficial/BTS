@@ -2,7 +2,7 @@ import { Api } from "../api";
 import { useQuery } from "@tanstack/react-query";
 
 const useGetFlights = (page: number, perPage: number) => {
-  const query = () => Api.flights.getFlights(page, perPage);
+  const query = () => Api.flights.getFlights({ page: page, per_page: perPage });
 
   const {
     isLoading,
@@ -10,7 +10,7 @@ const useGetFlights = (page: number, perPage: number) => {
     isSuccess,
   } = useQuery(["flights", page, perPage], query, {
     select: (response) => {
-      return response;
+      return response.data;
     },
   });
 

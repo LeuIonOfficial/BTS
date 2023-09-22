@@ -1,12 +1,19 @@
 import PaginationContainer from "./components/PaginationContainer";
 import { Table } from "antd";
 import { useColumns } from "./constants.tsx";
+import React, { Dispatch, SetStateAction } from "react";
+import { IUser } from "@models/clientType.ts";
 
-const CustomTable = () => {
-  const columns = useColumns();
+const CustomTable: React.FC<{
+  setDrawerState: Dispatch<SetStateAction<"create" | "update" | "closed">>;
+  setUserToUpdate: Dispatch<SetStateAction<IUser | undefined>>;
+}> = ({ setDrawerState, setUserToUpdate }) => {
+  const columns = useColumns(setDrawerState, setUserToUpdate);
+
   return (
     <PaginationContainer>
       {(props) => {
+        const { users, page, setPage } = { ...props };
         return (
           <>
             <Table
@@ -14,18 +21,19 @@ const CustomTable = () => {
               columns={columns}
               size="large"
               tableLayout="fixed"
-              dataSource={props.users?.data}
+              dataSource={users?.data}
               className="mx-3"
               pagination={{
                 position: ["bottomLeft"],
-                current: props.page,
+                current: page,
                 hideOnSinglePage: true,
-                pageSize: props.users?.meta?.total,
+                pageSize: users?.meta?.per_page,
+                total: users?.meta?.total,
                 onChange: (page) => {
-                  props.setPage(page);
+                  setPage(page);
                 },
               }}
-              rowKey="id"
+              rowKey={(user) => user.id}
             />
           </>
         );

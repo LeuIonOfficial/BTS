@@ -1,30 +1,57 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { Button, Drawer, Form, Space } from "antd";
 import { useForm } from "antd/es/form/Form";
 import FormItem from "antd/es/form/FormItem";
 
 import { SubmitButton } from "@components/index.ts";
 import { useUserInputFields } from "./constants.tsx";
+import usePostUser from "@hooks/usePostUser.ts";
+import { PostUserType } from "@models/user.ts";
+import { IUser } from "@models/clientType.ts";
+import { useUpdateUser } from "@hooks/useUpdateUser.ts";
 
 interface Props {
-  isModal: boolean;
-  setIsModal: Dispatch<SetStateAction<boolean>>;
+  drawerState: string;
+  setDrawerState: Dispatch<SetStateAction<"create" | "update" | "closed">>;
+  userToUpdate: IUser | undefined;
 }
 
-const CreateUserDrawer: React.FC<Props> = (props) => {
+const CreateUserDrawer: React.FC<Props> = ({
+  drawerState,
+  setDrawerState,
+  userToUpdate,
+}) => {
   const [form] = useForm();
   const fields = useUserInputFields();
+  const { postUser } = usePostUser(setDrawerState);
+  const { updateUser } = useUpdateUser(setDrawerState);
+
+  const handleFinish = (values: PostUserType) => {
+    drawerState === "create" && postUser(values);
+    drawerState === "update" &&
+      userToUpdate &&
+      updateUser({ ...values, id: userToUpdate.id });
+  };
+
+  useEffect(() => {
+    form.setFieldsValue(userToUpdate || {});
+  }, [userToUpdate]);
+
   return (
     <Drawer
-      title="Create new user"
+      title={drawerState === "create" ? "Create new user" : "Update old user"}
       width="700px"
-      open={props.isModal}
-      onClose={() => props.setIsModal(false)}
+      open={drawerState === "create" || drawerState === "update"}
+      onClose={() => {
+        setDrawerState("closed");
+        form.resetFields();
+      }}
       extra={
         <Space>
           <Button
             onClick={() => {
-              props.setIsModal(false);
+              setDrawerState("closed");
+              form.resetFields();
             }}
           >
             Cancel
@@ -42,16 +69,19 @@ const CreateUserDrawer: React.FC<Props> = (props) => {
       }
     >
       <div className="flex flex-col items-center">
-        <h1 className="font-bold text-2xl m-10">Register new user</h1>
+        <h1 className="font-bold text-2xl m-10">
+          {drawerState === "create" ? "Create new user" : "Update old user"}
+        </h1>
         <Form
           layout="horizontal"
           form={form}
-          onFinish={(values) => console.log(values)}
+          onFinish={handleFinish}
+          name="user"
         >
-          {fields.map((el, index) => {
+          {fields.map(({ name, rules, render }, index) => {
             return (
-              <FormItem name={el.name} key={index}>
-                {el.render()}
+              <FormItem name={name} key={index} validateFirst rules={rules}>
+                {render}
               </FormItem>
             );
           })}

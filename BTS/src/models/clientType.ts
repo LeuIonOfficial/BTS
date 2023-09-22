@@ -36,28 +36,3 @@ export interface IDeparture {
   from: IDepartureDetails;
   to: IDepartureDetails;
 }
-
-interface IFlightDetails {
-  adults: number;
-  child: number;
-  direction: string;
-  flight_class: string;
-  flights: IDeparture[];
-  infants: number;
-  price: number;
-}
-
-export interface IFlightsData {
-  assigned_time: null;
-  client: IClient;
-  client_id: number;
-  comment: string;
-  created_at: string;
-  details: IFlightDetails;
-  id: number;
-  ip_address: string;
-  is_conversion: number;
-  marketing_source: string;
-  user: IUser;
-  user_id: number;
-}

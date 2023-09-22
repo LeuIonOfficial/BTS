@@ -1,5 +1,5 @@
-import { IFlightsData } from "@models/clientType.ts";
-import { formatDate } from "../../../../helpers/FormatDate/formatDate.ts";
+import { GetFlightsType } from "@models/flights.ts";
+import { formatDate } from "@helpers/FormatDate/formatDate.ts";
 import { DeleteOutlined } from "@ant-design/icons";
 import "./style.css";
 import { Tag } from "antd";
@@ -9,7 +9,7 @@ export const useTableColumns = () => {
     {
       key: "1",
       title: "Request Created",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return <span>{formatDate(record.created_at)}</span>;
       },
       width: "9%",
@@ -17,7 +17,7 @@ export const useTableColumns = () => {
     {
       key: "2",
       title: "Lead ID",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return <span>{record.id}</span>;
       },
       width: "5%",
@@ -26,7 +26,7 @@ export const useTableColumns = () => {
       key: "3",
       title: "Customer Name",
       width: "7%",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return (
           <span>{`${record.client.first_name} ${record.client.last_name}`}</span>
         );
@@ -35,7 +35,7 @@ export const useTableColumns = () => {
     {
       key: "4",
       title: "Trip Type",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return <span>{`${record.details.direction}`}</span>;
       },
       width: "5%",
@@ -48,14 +48,14 @@ export const useTableColumns = () => {
       key: "6",
       title: "Cabin",
       width: "7%",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return record.details.flight_class;
       },
     },
     {
       key: "7",
       title: "Marketing Type",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return record.marketing_source;
       },
       width: "7%",
@@ -72,14 +72,14 @@ export const useTableColumns = () => {
       key: "8",
       title: "Agent Name",
       width: "7%",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return <span>{record.user.name}</span>;
       },
     },
     {
       key: "9",
       title: "Client Email",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return record.client.emails.map((el, index) => {
           return (
             <Tag color="green" key={index}>
@@ -93,7 +93,7 @@ export const useTableColumns = () => {
     {
       key: "10",
       title: "Client Phone",
-      render: (_: unknown, record: IFlightsData) => {
+      render: (_: unknown, record: GetFlightsType) => {
         return record.client.phones.map((el, index) => {
           return (
             <Tag color="geekblue" key={index}>

@@ -1,30 +1,26 @@
 import { Api } from "../api";
-import { IPostFlightsType } from "@models/postFlightsType.ts";
-import { useMutation } from "@tanstack/react-query";
+import { PostFlightType } from "@models/flights.ts";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const usePostFlight = () => {
-  const mutation = async ({
-    id,
-    form,
-  }: {
-    id?: string;
-    form: IPostFlightsType;
-  }) => {
-    return Api.flights.postFlight(id, form);
+  const mutation = async (data: PostFlightType) => {
+    return Api.flights.postFlight(data);
   };
 
-  const { data: response, mutateAsync: createFlightRequest } = useMutation(
+  const client = useQueryClient();
+
+  const { data: response, mutateAsync: postFlightRequest } = useMutation(
     mutation,
     {
-      onSuccess: (res) => {
-        console.log(res);
+      onSuccess: () => {
+        client.invalidateQueries(["flights"]);
       },
     },
   );
 
   return {
     response,
-    createFlightRequest,
+    postFlightRequest,
   };
 };
 
