@@ -1,4 +1,4 @@
-import { $api } from "../request";
+import { $api } from "@api/http";
 import { PostUsersParamsType, PostUserType } from "@models/user.ts";
 import { notification } from "antd";
 import { AxiosError } from "axios";

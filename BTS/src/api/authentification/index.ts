@@ -1,4 +1,4 @@
-import { $api } from "../request";
+import { $api } from "@api/http";
 import { LoginData, LoginResult } from "@models/authentificationType.ts";
 
 const storageKeyAccessToken = "ccpx_access_token";

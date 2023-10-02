@@ -6,7 +6,7 @@ import path from "node:path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@request": path.resolve(__dirname, "./src/api/request"),
+      "@request": path.resolve(__dirname, "./src/api/http"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@routes": path.resolve(__dirname, "./src/routes"),
       "@store": path.resolve(__dirname, "./src/store"),

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { $api } from "../request";
+import { $api } from "@api/http";
 import { PostFlightType } from "@models/flights.ts";
 import { GetFlightsParamsType, GetFlightsType } from "@models/flights.ts";
 import { ServerResponseType } from "@models/serverResponse.ts";
