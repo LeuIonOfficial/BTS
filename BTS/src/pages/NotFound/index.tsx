@@ -1,4 +1,3 @@
-import { LoggedIn } from "../../layouts";
 import { Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import routes from "@routes/routes.ts";
@@ -7,7 +6,7 @@ import { SubmitButton } from "@components/index.ts";
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <LoggedIn>
+    <div className="flex items-center justify-center h-[100vh]">
       <Result
         status="404"
         title="404"
@@ -21,7 +20,7 @@ const NotFound = () => {
           </SubmitButton>
         }
       />
-    </LoggedIn>
+    </div>
   );
 };
 

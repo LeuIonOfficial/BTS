@@ -3,6 +3,7 @@ import { UserContext } from "../../store";
 import { Navigate, Outlet } from "react-router-dom";
 import routes from "@routes/routes.ts";
 import LoggedIn from "../LoggedIn";
+import { RingLoader } from "react-spinners";
 const AuthLayout = () => {
   const { profile, isSuccess, isLoading } = useGetProfile();
 
@@ -16,7 +17,11 @@ const AuthLayout = () => {
     );
   }
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-[100vh] flex-col">
+        <RingLoader color="#059e9b" />
+      </div>
+    );
   }
   return <Navigate to={routes.login} />;
 };

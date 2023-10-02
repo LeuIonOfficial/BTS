@@ -16,7 +16,7 @@ const CustomHeader = () => {
       <div className="flex items-center justify-between flex-row h-[56px]]">
         <div>
           {items.map((item, index) => {
-            return <span key={index}>{item.content()}</span>;
+            return <span key={index}>{item.content}</span>;
           })}
         </div>
         <div>

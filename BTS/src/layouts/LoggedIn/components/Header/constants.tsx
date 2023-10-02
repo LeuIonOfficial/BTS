@@ -1,109 +1,94 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MenuProps } from "antd";
 
 import routes from "@routes/routes.ts";
-import { TextButton } from "@components/index.ts";
 import { Api } from "@api/index.ts";
 import { LogoutOutlined } from "@ant-design/icons";
 
 export const useHeaderItems = () => {
-  const navigate = useNavigate();
+  const nonActiveLink = "text-[16px] text-greenMain ml-4";
+  const activeLink =
+    "text-[16px] text-greenMain ml-4 border-b border-greenMain pb-1";
+
   return [
     {
       name: "requests",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate(routes.authenticated.requests);
-            }}
-            className="text-[16px]"
-          >
-            Requests
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to={routes.authenticated.requests}
+          ml-4
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Requests
+        </NavLink>
+      ),
     },
     {
       name: "sales",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate(routes.authenticated.sales);
-            }}
-            className="text-[16px]"
-          >
-            Sales
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to={routes.authenticated.sales}
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Sales
+        </NavLink>
+      ),
     },
     {
       name: "agents",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate(routes.authenticated.agents);
-            }}
-            className="text-[16px]"
-          >
-            Agents
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to={routes.authenticated.agents}
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Agents
+        </NavLink>
+      ),
     },
     {
       name: "regions",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate("/");
-            }}
-            className="text-[16px]"
-          >
-            Regions
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to="/"
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Regions
+        </NavLink>
+      ),
     },
     {
       name: "airports",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate("/");
-            }}
-            className="text-[16px]"
-          >
-            Airports
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Airports
+        </NavLink>
+      ),
     },
     {
       name: "export_clients",
-      content: () => {
-        return (
-          <TextButton
-            type="text"
-            onClick={() => {
-              navigate("/");
-            }}
-            className="text-[16px]"
-          >
-            Export Clients
-          </TextButton>
-        );
-      },
+      content: (
+        <NavLink
+          to={"/"}
+          className={({ isActive }) => {
+            return isActive ? activeLink : nonActiveLink;
+          }}
+        >
+          Export Clients
+        </NavLink>
+      ),
     },
   ];
 };
