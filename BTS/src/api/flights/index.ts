@@ -5,7 +5,6 @@ import { PostFlightType } from "@models/flights.ts";
 import { GetFlightsParamsType, GetFlightsType } from "@models/flights.ts";
 import { ServerResponseType } from "@models/serverResponse.ts";
 import { notification } from "antd";
-import { AxiosError } from "axios";
 
 export class Flights {
   async getFlights(
@@ -19,23 +18,12 @@ export class Flights {
   }
 
   async postFlight(data: PostFlightType) {
-    try {
-      const response = await $api.post("/api/flights", data);
-      if (response.status >= 200 && response.status < 300) {
-        notification.success({
-          message: `Flight request successfully created`,
-        });
-      }
-      return response;
-    } catch (e) {
-      if (e instanceof AxiosError) {
-        console.log(e.message);
-        notification.error({
-          message: `Flight request failed: ${e.message}`,
-        });
-      } else {
-        console.log(e);
-      }
+    const response = await $api.post("/api/flights", data).catch((e) => e);
+    if (response.status >= 200 && response.status < 300) {
+      notification.success({
+        message: `Flight request successfully created`,
+      });
     }
+    return response;
   }
 }

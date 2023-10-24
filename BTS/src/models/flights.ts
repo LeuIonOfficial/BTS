@@ -31,7 +31,7 @@ export interface GetFlightsType {
 }
 
 export interface PostFlightType {
-  user_id: string;
+  user_id?: string;
   first_name: string;
   last_name: string;
   notes: string;

@@ -6,9 +6,10 @@ import { Api } from "@api/index.ts";
 import { LogoutOutlined } from "@ant-design/icons";
 
 export const useHeaderItems = () => {
-  const nonActiveLink = "text-[16px] text-greenMain ml-4";
-  const activeLink =
-    "text-[16px] text-greenMain ml-4 border-b border-greenMain pb-1";
+  const nonActiveLink: string =
+    "text-[16px] text-greenMain ml-2 p-2 hover:rounded-md hover:text-white hover:bg-greenMain";
+  const activeLink: string =
+    "text-[16px] text-white ml-2 p-2 rounded-md bg-greenMain hover:text-white";
 
   return [
     {
@@ -16,7 +17,6 @@ export const useHeaderItems = () => {
       content: (
         <NavLink
           to={routes.authenticated.requests}
-          ml-4
           className={({ isActive }) => {
             return isActive ? activeLink : nonActiveLink;
           }}
@@ -99,8 +99,8 @@ export const useDropdownItems = (): MenuProps["items"] => {
     {
       label: (
         <span
-          onClick={() => {
-            Api.auth.logout();
+          onClick={async () => {
+            await Api.auth.logout();
             navigate("/login");
           }}
           className="flex items-center justify-evenly"
