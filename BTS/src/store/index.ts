@@ -1,4 +1,4 @@
 import { createContext } from "react";
-import { userProfile } from "@models/user.ts";
+import { GetUserType } from "@models/user.ts";
 
-export const UserContext = createContext<userProfile | undefined>(undefined);
+export const UserContext = createContext<GetUserType | undefined>(undefined);
