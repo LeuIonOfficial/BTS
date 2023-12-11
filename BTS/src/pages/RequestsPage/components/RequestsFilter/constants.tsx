@@ -1,9 +1,9 @@
-import { DatePicker, Select } from "antd";
+import {DatePicker, Select} from "antd";
 import useGetUsers from "@hooks/useGetUsers.ts";
-import { marketingSource } from "@helpers/MarketingSource";
+import {marketingSource} from "@helpers/MarketingSource";
 
 export const useFilterFields = () => {
-  const { users } = useGetUsers();
+  const { users } = useGetUsers(1, 10);
   const { RangePicker } = DatePicker;
   return [
     {

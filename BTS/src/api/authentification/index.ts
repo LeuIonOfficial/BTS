@@ -10,7 +10,7 @@ export class authApi {
   }
 
   async login(data: LoginData): Promise<LoginResult> {
-    let response = await $api.post("/api/auth/login", {
+    const response = await $api.post("/api/auth/login", {
       email: data.email,
       password: data.password,
     });

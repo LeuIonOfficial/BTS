@@ -35,7 +35,7 @@ const CreateUserDrawer: React.FC<Props> = ({
 
   useEffect(() => {
     form.setFieldsValue(userToUpdate || {});
-  }, [userToUpdate]);
+  }, [userToUpdate, form]);
 
   return (
     <Drawer

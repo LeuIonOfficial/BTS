@@ -12,8 +12,8 @@ const usePostFlight = () => {
   const { data: response, mutateAsync: postFlightRequest } = useMutation(
     mutation,
     {
-      onSuccess: () => {
-        client.invalidateQueries(["flights"]);
+      onSuccess: async () => {
+        await client.invalidateQueries(["flights"]);
       },
     },
   );
