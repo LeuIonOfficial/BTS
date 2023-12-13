@@ -1,11 +1,10 @@
 import { FC, useState } from "react";
-import { Form, message } from "antd";
+import { Button, Form, message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import useFormItems from "./constants.tsx";
 import { Api } from "@api/index.ts";
 import routes from "@routes/routes.ts";
-import { SubmitButton } from "@components/index.ts";
 import background from "@assets/183355.jpg";
 import { RightOutlined } from "@ant-design/icons";
 
@@ -107,14 +106,14 @@ const LoginForm: FC = () => {
                     );
                   })}
                   <Form.Item>
-                    <SubmitButton
+                    <Button
                       type="primary"
                       htmlType="submit"
                       disabled={buttonStatus}
-                      className="mb-10 mt-2 text-[14px]"
+                      className="mb-10 mt-2 text-[14px] submit-button"
                     >
                       Submit
-                    </SubmitButton>
+                    </Button>
                   </Form.Item>
                 </Form>
               </div>

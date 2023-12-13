@@ -1,5 +1,5 @@
 import { ISalesData } from "./index.tsx";
-import { formatDate } from "../../../../helpers/FormatDate/formatDate.ts";
+import { formatDate } from "@helpers/FormatDate/formatDate.ts";
 
 const useTableColumns = () => {
   return [
