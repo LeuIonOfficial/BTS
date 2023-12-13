@@ -3,7 +3,6 @@ import { Button, Drawer, Form, Space } from "antd";
 import { useForm } from "antd/es/form/Form";
 import FormItem from "antd/es/form/FormItem";
 
-import { SubmitButton } from "@components/index.ts";
 import { useUserInputFields } from "./constants.tsx";
 import usePostUser from "@hooks/usePostUser.ts";
 import { PostUserType } from "@models/user.ts";
@@ -56,15 +55,16 @@ const CreateUserDrawer: React.FC<Props> = ({
           >
             Cancel
           </Button>
-          <SubmitButton
+          <Button
             type="primary"
+            className="submit-button"
             htmlType="submit"
             onClick={() => {
               form.submit();
             }}
           >
             Submit
-          </SubmitButton>
+          </Button>
         </Space>
       }
     >

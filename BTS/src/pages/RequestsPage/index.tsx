@@ -4,7 +4,7 @@ import { Header, RequestDrawer, SubHeader, Table } from "./components/";
 import { GetFlightsType } from "@models/flights.ts";
 import { StyledPage } from "@components/index.ts";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { CustomFloatButton } from "@components/CustomFloatButton";
+import { FloatButton } from "antd";
 
 const RequestsPage = () => {
   const [selectedRowElements, setSelectedRowElements] =
@@ -16,10 +16,10 @@ const RequestsPage = () => {
       <SubHeader />
       <RequestDrawer open={drawerState} setDrawerState={setDrawerState} />
       <Table setSelectedRowElements={setSelectedRowElements} />
-      <CustomFloatButton
+      <FloatButton
         type="primary"
         shape="circle"
-        className="w-[50px] h-[50px]"
+        className="float-button"
         onClick={() => {
           setDrawerState(true);
         }}
@@ -30,8 +30,8 @@ const RequestsPage = () => {
         }
       />
       {!!selectedRowElements?.length && (
-        <CustomFloatButton
-          className="bottom-[110px] w-[50px] h-[50px]"
+        <FloatButton
+          className="bottom-[110px] float-button"
           type="primary"
           shape="circle"
           icon={

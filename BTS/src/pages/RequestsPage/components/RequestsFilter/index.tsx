@@ -1,6 +1,5 @@
-import { Form } from "antd";
+import { Button, Form } from "antd";
 import FormItem from "antd/es/form/FormItem";
-import { SubmitButton } from "@components/index.ts";
 import { useFilterFields } from "./constants.tsx";
 
 const SalesFilter = () => {
@@ -22,9 +21,9 @@ const SalesFilter = () => {
             );
           })}
           <FormItem className="my-0 mx-3">
-            <SubmitButton type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" className="submit-button">
               Submit
-            </SubmitButton>
+            </Button>
           </FormItem>
         </div>
       </Form>

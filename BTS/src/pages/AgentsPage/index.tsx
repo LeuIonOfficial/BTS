@@ -2,8 +2,8 @@ import { UserAddOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 import { Table, Header, CreateUserDrawer } from "./components";
-import { CustomFloatButton } from "@components/CustomFloatButton";
 import { IUser } from "@models/clientType.ts";
+import { FloatButton } from "antd";
 
 const AgentsPage = () => {
   const [drawerState, setDrawerState] = useState<
@@ -20,10 +20,10 @@ const AgentsPage = () => {
         setDrawerState={setDrawerState}
         setUserToUpdate={setUserToUpdate}
       />
-      <CustomFloatButton
+      <FloatButton
         type="primary"
         shape="circle"
-        className="w-[50px] h-[50px]"
+        className="float-button"
         onClick={() => {
           setDrawerState("create");
         }}
@@ -33,7 +33,6 @@ const AgentsPage = () => {
           </div>
         }
       />
-
       <CreateUserDrawer
         drawerState={drawerState}
         setDrawerState={setDrawerState}

@@ -9,7 +9,7 @@ import {
 } from "./pages";
 import routes from "./routes/routes.ts";
 import { AuthLayout } from "./layouts";
-import "./index.css";
+import "./index.scss";
 
 const DashboardRedirect = () => {
   return <Navigate to={routes.authenticated.requests} />;

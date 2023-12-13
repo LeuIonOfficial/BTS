@@ -4,7 +4,6 @@ import { useForm } from "antd/es/form/Form";
 
 import ClientInformation from "./components/ClientInformation";
 import FlightInformation from "./components/FlightInformation";
-import { SubmitButton } from "@components/index.ts";
 import { usePostFlight } from "@hooks/index.ts";
 import { PostFlightType } from "@models/flights.ts";
 import { UserContext } from "@store/index.ts";
@@ -41,15 +40,16 @@ const CreateRequest = ({
           >
             Cancel
           </Button>
-          <SubmitButton
+          <Button
             type="primary"
             htmlType="submit"
+            className="submit-button"
             onClick={() => {
               form.submit();
             }}
           >
             Submit
-          </SubmitButton>
+          </Button>
         </Space>
       }
     >

@@ -1,7 +1,6 @@
-import { Result } from "antd";
+import { Button, Result } from "antd";
 import { useNavigate } from "react-router-dom";
 import routes from "@routes/routes.ts";
-import { SubmitButton } from "@components/index.ts";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -12,12 +11,13 @@ const NotFound = () => {
         title="404"
         subTitle="Sorry, the page you visited does not exist."
         extra={
-          <SubmitButton
+          <Button
             type="primary"
+            className="submit-button"
             onClick={() => navigate(routes.authenticated.root)}
           >
             Back Home
-          </SubmitButton>
+          </Button>
         }
       />
     </div>

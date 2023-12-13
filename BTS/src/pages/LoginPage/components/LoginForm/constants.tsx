@@ -1,4 +1,4 @@
-import CustomInput from "@components/CustomInput";
+import { CustomInput } from "@components/index.ts";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 const useFormItems = () => {
