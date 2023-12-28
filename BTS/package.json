@@ -14,16 +14,20 @@
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@tanstack/react-query": "^4.33.0",
+    "@tanstack/react-query-devtools": "^5.14.1",
     "@types/node": "^20.5.6",
     "antd": "^5.8.4",
     "axios": "^1.5.0",
+    "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
     "heroicons": "^2.0.18",
+    "motion": "^10.16.4",
     "prettier": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
-    "react-spinners": "^0.13.8"
+    "react-spinners": "^0.13.8",
+    "yarn": "^1.22.21"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

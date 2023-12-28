@@ -17,6 +17,7 @@ const CustomTable: React.FC<{
         return (
           <>
             <Table
+              scroll={{ x: 1300 }}
               rowSelection={{ type: "checkbox" }}
               columns={columns}
               size="large"

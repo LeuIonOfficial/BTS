@@ -1,9 +1,9 @@
-import {Col, Input, Row, Select} from "antd";
+import { Col, Input, Row, Select } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import FormList from "antd/es/form/FormList";
-import {DeleteOutlined, PlusOutlined, UserOutlined} from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
-import {marketingSource} from "@helpers/MarketingSource";
+import { marketingSource } from "@helpers/MarketingSource";
 
 export const rules = [
   {

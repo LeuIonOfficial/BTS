@@ -3,8 +3,12 @@ import { formatDate } from "@helpers/FormatDate/formatDate.ts";
 import { DeleteOutlined } from "@ant-design/icons";
 import "./style.css";
 import { Tag } from "antd";
+import { generatePath, useNavigate } from "react-router-dom";
+import routes from "@routes/routes.ts";
+import { convertFlightClass } from "@helpers/FlightClass";
 
 export const useTableColumns = () => {
+  const navigate = useNavigate();
   return [
     {
       key: "1",
@@ -18,7 +22,21 @@ export const useTableColumns = () => {
       key: "2",
       title: "Lead ID",
       render: (_: unknown, record: GetFlightsType) => {
-        return <span>{record.id}</span>;
+        return (
+          <span
+            className="cursor-pointer"
+            onClick={() =>
+              navigate(
+                generatePath(routes.authenticated.assignedFlights, {
+                  id: record.id,
+                  page: "flight-details",
+                }),
+              )
+            }
+          >
+            {record.id}
+          </span>
+        );
       },
       width: "5%",
     },
@@ -34,6 +52,7 @@ export const useTableColumns = () => {
     },
     {
       key: "4",
+
       title: "Trip Type",
       render: (_: unknown, record: GetFlightsType) => {
         return <span>{`${record.details.direction}`}</span>;
@@ -49,7 +68,7 @@ export const useTableColumns = () => {
       title: "Cabin",
       width: "7%",
       render: (_: unknown, record: GetFlightsType) => {
-        return record.details.flight_class;
+        return convertFlightClass[record.details.flight_class];
       },
     },
     {

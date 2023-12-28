@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import {
   AgentsPage,
+  AssignedFlights,
+  BadRequest,
   LoginPage,
   NotFound,
   RequestsPage,
@@ -28,8 +30,13 @@ const App = () => {
         />
         <Route path={routes.authenticated.sales} element={<SalesPage />} />
         <Route path={routes.authenticated.agents} element={<AgentsPage />} />
+        <Route
+          path={routes.authenticated.assignedFlights}
+          element={<AssignedFlights />}
+        />
       </Route>
       <Route path={routes.notFound} element={<NotFound />} />
+      <Route path={routes.badRequest} element={<BadRequest />} />
     </Routes>
   );
 };

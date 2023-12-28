@@ -10,11 +10,15 @@ export class Flights {
   async getFlights(
     params: GetFlightsParamsType,
   ): Promise<AxiosResponse<ServerResponseType<GetFlightsType>>> {
-    return await $api.get("/api/flights", {
+    return $api.get("/api/flights", {
       params: {
         ...params,
       },
     });
+  }
+
+  async getFlightById(id: string | undefined) {
+    if (id!) return $api.get(`/api/flights/${id}`).catch((e) => e);
   }
 
   async postFlight(data: PostFlightType) {

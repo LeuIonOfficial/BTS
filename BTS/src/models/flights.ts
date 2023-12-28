@@ -5,11 +5,11 @@ export interface GetFlightsParamsType {
   per_page: number;
 }
 
-interface FlightDetailsType {
+export interface FlightDetailsType {
   adults: number;
   child: number;
   direction: string;
-  flight_class: string;
+  flight_class: "premium-economy" | "business" | "first";
   flights: IDeparture[];
   infants: number;
   price: number;

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect } from "react";
 import { Button, Drawer, Form, Space } from "antd";
 import { useForm } from "antd/es/form/Form";
 
@@ -11,16 +11,23 @@ import { UserContext } from "@store/index.ts";
 const CreateRequest = ({
   open,
   setDrawerState,
+  clientDetails,
 }: {
   open: boolean;
   setDrawerState: Dispatch<SetStateAction<boolean>>;
+  clientDetails?: any;
 }) => {
   const [form] = useForm();
   const { postFlightRequest } = usePostFlight();
   const user = useContext(UserContext);
 
+  useEffect(() => {
+    clientDetails && form.setFieldsValue(clientDetails);
+  }, [clientDetails, open]);
+
   return (
     <Drawer
+      forceRender
       open={open}
       onClose={() => {
         setDrawerState(false);

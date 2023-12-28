@@ -33,6 +33,7 @@ const CustomTable = () => {
       {(props) => {
         return (
           <Table
+            scroll={{ x: 1300 }}
             sticky={true}
             rowSelection={{ type: "checkbox" }}
             size="small"

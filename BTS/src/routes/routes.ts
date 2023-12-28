@@ -6,6 +6,7 @@ const routes = {
     requests: authenticatedRoot + "/requests",
     agents: authenticatedRoot + "/agents",
     sales: authenticatedRoot + "/sales",
+    assignedFlights: authenticatedRoot + "/:page/:id/",
   },
   login: "/login",
   notFound: "*",

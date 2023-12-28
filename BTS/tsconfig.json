@@ -14,7 +14,7 @@
       "@models/*": ["./src/models/*"],
       "@api/*": ["./src/api/*"],
       "@assets/*": ["./src/assets/*"],
-      "@helpers/*": ["./src/helpers/*"],
+      "@helpers/*": ["./src/helpers/*"]
     },
 
     /* Bundler mode */
@@ -29,7 +29,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

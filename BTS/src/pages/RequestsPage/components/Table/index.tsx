@@ -12,7 +12,6 @@ const CustomTable = ({
   >;
 }) => {
   const columns = useTableColumns();
-
   return (
     <PaginationContainer>
       {(props) => {
@@ -43,6 +42,7 @@ const CustomTable = ({
               }}
               rowKey="id"
               className="mx-3"
+              scroll={{ x: 1300 }}
             />
           </>
         );

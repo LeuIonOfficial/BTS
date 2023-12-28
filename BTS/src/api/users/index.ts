@@ -10,10 +10,17 @@ export class Users {
       },
     });
   }
+  async getUserById(id?: number) {
+    return $api.get(`/api/users/${id}`).catch((e) => {
+      return e;
+    });
+  }
 
   async postUser(data: PostUserType) {
-    const response = await $api.post("/api/users", data).catch((e) => e);
-    console.log(response);
+    const response = await $api.post("/api/users", data).catch((e) => {
+      console.log(e);
+      return e;
+    });
     if (response.status >= 200 && response.status < 300) {
       notification.success({
         message: `User ${data.name} successfully added`,

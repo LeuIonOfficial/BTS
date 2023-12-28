@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 body {
-   @apply m-0;
+  @apply m-0;
 }
 
 .float-button {
-    @apply w-[50px] h-[50px];
+  @apply w-[50px] h-[50px];
 
-    .ant-float-btn-body {
-        @apply bg-[#059e9b];
-    }
+  .ant-float-btn-body {
+    @apply bg-[#059e9b];
+  }
 }
 
 .submit-button {
-    @apply flex items-center justify-center self-center gap-2 bg-[#059e9b] text-white w-full;
+  @apply flex items-center justify-center self-center gap-2 bg-[#059e9b] text-white w-full;
 }
 
 .table-header {
-    @apply flex flex-row items-center justify-between m-[20px] mb-0;
+  @apply flex flex-row flex-wrap items-center justify-between m-[20px] mb-0;
 }

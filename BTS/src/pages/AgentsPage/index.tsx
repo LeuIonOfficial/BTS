@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Table, Header, CreateUserDrawer } from "./components";
 import { IUser } from "@models/clientType.ts";
 import { FloatButton } from "antd";
+import { StyledPage } from "@components/index.ts";
 
 const AgentsPage = () => {
   const [drawerState, setDrawerState] = useState<
@@ -14,7 +15,7 @@ const AgentsPage = () => {
   );
 
   return (
-    <div className="w-full h-full bg-white">
+    <StyledPage>
       <Header />
       <Table
         setDrawerState={setDrawerState}
@@ -38,7 +39,7 @@ const AgentsPage = () => {
         setDrawerState={setDrawerState}
         userToUpdate={userToUpdate}
       />
-    </div>
+    </StyledPage>
   );
 };
 

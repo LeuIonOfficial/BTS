@@ -1,12 +1,12 @@
-import { FC, useState } from "react";
 import { Button, Form, message } from "antd";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useFormItems from "./constants.tsx";
-import { Api } from "@api/index.ts";
-import routes from "@routes/routes.ts";
-import background from "@assets/183355.jpg";
 import { RightOutlined } from "@ant-design/icons";
+import { Api } from "@api/index.ts";
+import background from "@assets/183355.jpg";
+import routes from "@routes/routes.ts";
+import useFormItems from "./constants.tsx";
 
 const LoginForm: FC = () => {
   const items = useFormItems();
@@ -32,7 +32,7 @@ const LoginForm: FC = () => {
   return (
     <div className="overflow-hidden flex items-center h-[100vh]">
       <img
-        src={background}
+        src={background as string}
         alt="plane"
         className="w-full h-full absolute -z-10"
       />
@@ -94,14 +94,15 @@ const LoginForm: FC = () => {
                 >
                   {contextHolder}
                   {items.map((item, index) => {
+                    const { name, rules, content } = item;
                     return (
                       <Form.Item
-                        name={item.name}
-                        rules={item.rules}
+                        name={name}
+                        rules={rules}
                         key={index}
                         className="my-6"
                       >
-                        {item.content}
+                        {content}
                       </Form.Item>
                     );
                   })}
