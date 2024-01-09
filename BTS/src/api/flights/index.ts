@@ -1,14 +1,17 @@
 import { AxiosResponse } from "axios";
 
 import { $api } from "@api/http";
-import { PostFlightType } from "@models/flights.ts";
-import { GetFlightsParamsType, GetFlightsType } from "@models/flights.ts";
+import {
+  GetFlightsParamsType,
+  GetFlightsType,
+  PostFlightType,
+} from "@models/flights.ts";
 import { ServerResponseType } from "@models/serverResponse.ts";
 import { notification } from "antd";
 
 export class Flights {
   async getFlights(
-    params: GetFlightsParamsType,
+    params: GetFlightsParamsType
   ): Promise<AxiosResponse<ServerResponseType<GetFlightsType>>> {
     return $api.get("/api/flights", {
       params: {

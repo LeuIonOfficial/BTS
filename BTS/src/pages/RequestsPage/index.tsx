@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-import { Header, RequestDrawer, SubHeader, Table } from "./components/";
-import { GetFlightsType } from "@models/flights.ts";
-import { StyledPage } from "@components/index.ts";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { StyledPage } from "@components/index.ts";
+import { GetFlightsType } from "@models/flights.ts";
 import { FloatButton } from "antd";
+import { Header, RequestDrawer, SubHeader, Table } from "./components/";
 
 const RequestsPage = () => {
-  const [selectedRowElements, setSelectedRowElements] =
-    useState<GetFlightsType[]>();
+  const [selectedRowElements, setSelectedRowElements] = useState<
+    GetFlightsType[]
+  >();
   const [drawerState, setDrawerState] = useState<boolean>(false);
   return (
     <StyledPage>

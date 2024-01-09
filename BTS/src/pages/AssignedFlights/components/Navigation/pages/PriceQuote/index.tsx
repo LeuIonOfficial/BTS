@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 
 import Loader from "@components/Loader";
+import useGetOffers from "@hooks/useGetOffers.ts";
 import { Table } from "antd";
 import { useTableColumns } from "./constants.tsx";
-import useGetOffers from "@hooks/useGetOffers.ts";
 
 const PriceQuote = () => {
   const id = useParams().id as string;
@@ -20,7 +20,7 @@ const PriceQuote = () => {
 
   return (
     <div className="overflow-hidden rounded-md bg-white shadow">
-      <Table columns={columns} dataSource={offers} scroll={{ x: 1300 }}></Table>
+      <Table columns={columns} dataSource={offers} scroll={{ x: 1300 }} />
     </div>
   );
 };

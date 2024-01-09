@@ -1,7 +1,7 @@
+import { IDeparture } from "@models/clientType.ts";
+import { FlightDetailsType } from "@models/flights.ts";
 import { Badge, Button, DatePicker, Input, Select } from "antd";
 import dayjs from "dayjs";
-import { FlightDetailsType } from "@models/flights.ts";
-import { IDeparture } from "@models/clientType.ts";
 
 const FlightDetails = ({
   flightDetails,

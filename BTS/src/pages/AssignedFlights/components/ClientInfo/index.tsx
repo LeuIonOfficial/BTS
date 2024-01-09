@@ -14,12 +14,7 @@ const ClientInfo = (props: {
     | undefined;
   userDetails: { name: string } | undefined;
 }) => {
-  const {
-    emails = [],
-    phones = [],
-    last_name,
-    first_name,
-  } = {
+  const { emails = [], phones = [], last_name, first_name } = {
     ...props.clientDetails,
   };
   const { name } = {

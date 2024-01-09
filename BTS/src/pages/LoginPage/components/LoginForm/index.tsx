@@ -15,18 +15,19 @@ const LoginForm: FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [buttonStatus, setButtonStatus] = useState<boolean>(false);
 
-  const handleSubmitForm = (values: { email: string; password: string }) => {
+  const handleSubmitForm = async (values: {
+    email: string;
+    password: string;
+  }) => {
     setButtonStatus(true);
-    const login = async () => {
-      const response = await Api.auth.login(values);
-      if (response.success) {
-        navigate(routes.authenticated.requests);
-      } else {
-        messageApi.open({ type: "error", content: response.message });
-        setButtonStatus(false);
-      }
-    };
-    login();
+    try {
+      await Api.auth.login(values);
+      navigate(routes.authenticated.requests);
+      setButtonStatus(false);
+    } catch {
+      messageApi.open({ type: "error", content: "Invalid credentials" });
+      setButtonStatus(false);
+    }
   };
 
   return (

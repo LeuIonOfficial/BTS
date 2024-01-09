@@ -1,5 +1,5 @@
-import axios from "axios";
 import { notification } from "antd";
+import axios from "axios";
 
 export const $api = axios.create({
   baseURL: import.meta.env.VITE_SECRET_URL,
@@ -8,7 +8,7 @@ export const $api = axios.create({
 
 $api.interceptors.request.use((config) => {
   config.headers.authorization = `Bearer ${localStorage.getItem(
-    "ccpx_access_token",
+    "ccpx_access_token"
   )}`;
   return config;
 });
@@ -26,5 +26,5 @@ $api.interceptors.response.use(
       notification.error({ message: "Data not found" });
     }
     return error;
-  },
+  }
 );

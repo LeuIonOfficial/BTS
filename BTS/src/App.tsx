@@ -1,5 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
+import "./index.scss";
+import { AuthLayout } from "./layouts";
 import {
   AgentsPage,
   AssignedFlights,
@@ -10,8 +12,6 @@ import {
   SalesPage,
 } from "./pages";
 import routes from "./routes/routes.ts";
-import { AuthLayout } from "./layouts";
-import "./index.scss";
 
 const DashboardRedirect = () => {
   return <Navigate to={routes.authenticated.requests} />;

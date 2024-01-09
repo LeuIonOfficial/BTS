@@ -1,8 +1,8 @@
-import { Table } from "antd";
-import { useTableColumns } from "./constants.tsx";
-import PaginationContainer from "./components/PaginationContainer";
-import { Dispatch, SetStateAction } from "react";
 import { GetFlightsType } from "@models/flights.ts";
+import { Table } from "antd";
+import { Dispatch, SetStateAction } from "react";
+import PaginationContainer from "./components/PaginationContainer";
+import { useTableColumns } from "./constants.tsx";
 
 const CustomTable = ({
   setSelectedRowElements,
