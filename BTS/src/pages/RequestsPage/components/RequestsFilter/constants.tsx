@@ -1,6 +1,6 @@
-import { DatePicker, Select } from "antd";
-import useGetUsers from "@hooks/useGetUsers.ts";
 import { marketingSource } from "@helpers/MarketingSource";
+import useGetUsers from "@hooks/useGetUsers.ts";
+import { DatePicker, Select } from "antd";
 
 export const useFilterFields = () => {
   const { users } = useGetUsers(1, 10);
@@ -10,7 +10,7 @@ export const useFilterFields = () => {
       label: "Date",
       name: "date",
       className: "my-0 mx-3",
-      render: <RangePicker style={{ width: "300px" }} />,
+      render: <RangePicker style={{ width: "250px" }} />,
     },
     {
       label: "Agent",
@@ -18,7 +18,7 @@ export const useFilterFields = () => {
       className: "my-0 mx-3",
       render: (
         <Select
-          style={{ width: "200px" }}
+          style={{ width: "150px" }}
           options={users?.data?.map(({ name }: { name: string }) => {
             return { label: name, value: name };
           })}
@@ -31,7 +31,7 @@ export const useFilterFields = () => {
       className: "my-0 mx-3",
       render: (
         <Select
-          style={{ width: "200px" }}
+          style={{ width: "150px" }}
           options={marketingSource.map((el) => ({ name: el, value: el }))}
         />
       ),

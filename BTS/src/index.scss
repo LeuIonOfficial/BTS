@@ -19,5 +19,5 @@ body {
 }
 
 .table-header {
-  @apply flex flex-row flex-wrap items-center justify-between m-[20px] mb-0;
+  @apply flex flex-row items-center justify-between p-4 overflow-hidden rounded-md bg-white shadow;
 }

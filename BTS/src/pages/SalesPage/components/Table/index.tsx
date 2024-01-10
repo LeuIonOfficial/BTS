@@ -1,6 +1,6 @@
-import PaginationContainer from "./components/PaginationContainer";
-import { Table } from "antd";
 import { IClient, IUser } from "@models/clientType.ts";
+import { Table } from "antd";
+import PaginationContainer from "./components/PaginationContainer";
 import useTableColumns from "./constants.tsx";
 
 export interface ISalesData {
@@ -29,32 +29,33 @@ export interface ISalesData {
 const CustomTable = () => {
   const columns = useTableColumns();
   return (
-    <PaginationContainer>
-      {(props) => {
-        return (
-          <Table
-            scroll={{ x: 1300 }}
-            sticky={true}
-            rowSelection={{ type: "checkbox" }}
-            size="small"
-            tableLayout="fixed"
-            dataSource={props.sales?.data || []}
-            columns={columns}
-            pagination={{
-              current: props.page,
-              hideOnSinglePage: true,
-              pageSize: props.sales?.meta.per_page,
-              total: props.sales?.meta.total,
-              onChange: (page) => {
-                props.setPage(page);
-              },
-            }}
-            rowKey="id"
-            className="mx-3"
-          />
-        );
-      }}
-    </PaginationContainer>
+    <div className="overflow-hidden rounded-md bg-white shadow">
+      <PaginationContainer>
+        {(props) => {
+          return (
+            <Table
+              scroll={{ x: 1300 }}
+              sticky={true}
+              rowSelection={{ type: "checkbox" }}
+              size="small"
+              tableLayout="fixed"
+              dataSource={props.sales?.data || []}
+              columns={columns}
+              pagination={{
+                current: props.page,
+                hideOnSinglePage: true,
+                pageSize: props.sales?.meta.per_page,
+                total: props.sales?.meta.total,
+                onChange: (page) => {
+                  props.setPage(page);
+                },
+              }}
+              rowKey="id"
+            />
+          );
+        }}
+      </PaginationContainer>
+    </div>
   );
 };
 

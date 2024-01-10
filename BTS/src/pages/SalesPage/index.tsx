@@ -1,15 +1,14 @@
-import { StyledPage } from "@components/index.ts";
-import CustomTable from "./components/Table";
 import SalesHeader from "./components/Header";
 import SalesSubHeader from "./components/SubHeader";
+import CustomTable from "./components/Table";
 
 const SalesPage = () => {
   return (
-    <StyledPage>
+    <div className="w-full h-full">
       <SalesHeader />
       <SalesSubHeader />
       <CustomTable />
-    </StyledPage>
+    </div>
   );
 };
 

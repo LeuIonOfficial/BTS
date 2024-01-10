@@ -1,13 +1,13 @@
-import { Card, Col, Row, Statistic } from "antd";
 import {
   ArrowUpOutlined,
   AuditOutlined,
   BellOutlined,
 } from "@ant-design/icons";
+import { Card, Col, Row, Statistic } from "antd";
 
 const SubHeader = () => {
   return (
-    <div className="m-[10px]">
+    <div className="my-4">
       <Row gutter={16}>
         <Col span={8}>
           <Card bordered={false} hoverable={true}>

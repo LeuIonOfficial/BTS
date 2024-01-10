@@ -16,7 +16,7 @@ const CustomTable = ({
     <PaginationContainer>
       {(props) => {
         return (
-          <>
+          <div className="overflow-hidden rounded-md bg-white shadow">
             <Table
               sticky={true}
               size="small"
@@ -41,10 +41,9 @@ const CustomTable = ({
                 },
               }}
               rowKey="id"
-              className="mx-3"
               scroll={{ x: 1300 }}
             />
-          </>
+          </div>
         );
       }}
     </PaginationContainer>

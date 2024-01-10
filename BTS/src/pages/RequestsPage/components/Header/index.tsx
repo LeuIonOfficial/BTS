@@ -7,9 +7,7 @@ const CustomTableHeader = () => {
       <Typography>
         <span className="text-2xl font-bold">Requests</span>
       </Typography>
-      <div>
-        <SalesFilter />
-      </div>
+      <SalesFilter />
     </div>
   );
 };

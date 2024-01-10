@@ -1,4 +1,4 @@
-import { Button, Form, message } from "antd";
+import { Button, Form, notification } from "antd";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,6 @@ const LoginForm: FC = () => {
   const items = useFormItems();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [messageApi, contextHolder] = message.useMessage();
   const [buttonStatus, setButtonStatus] = useState<boolean>(false);
 
   const handleSubmitForm = async (values: {
@@ -25,7 +24,7 @@ const LoginForm: FC = () => {
       navigate(routes.authenticated.requests);
       setButtonStatus(false);
     } catch {
-      messageApi.open({ type: "error", content: "Invalid credentials" });
+      notification.error({ message: "Invalid credentials" });
       setButtonStatus(false);
     }
   };
@@ -93,7 +92,6 @@ const LoginForm: FC = () => {
                   autoComplete="off"
                   onFinish={handleSubmitForm}
                 >
-                  {contextHolder}
                   {items.map((item, index) => {
                     const { name, rules, content } = item;
                     return (

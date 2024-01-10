@@ -1,8 +1,8 @@
-import PaginationContainer from "./components/PaginationContainer";
-import { Table } from "antd";
-import { useColumns } from "./constants.tsx";
-import React, { Dispatch, SetStateAction } from "react";
 import { IUser } from "@models/clientType.ts";
+import { Table } from "antd";
+import React, { Dispatch, SetStateAction } from "react";
+import PaginationContainer from "./components/PaginationContainer";
+import { useColumns } from "./constants.tsx";
 
 const CustomTable: React.FC<{
   setDrawerState: Dispatch<SetStateAction<"create" | "update" | "closed">>;
@@ -11,35 +11,36 @@ const CustomTable: React.FC<{
   const columns = useColumns(setDrawerState, setUserToUpdate);
 
   return (
-    <PaginationContainer>
-      {(props) => {
-        const { users, page, setPage } = { ...props };
-        return (
-          <>
-            <Table
-              scroll={{ x: 1300 }}
-              rowSelection={{ type: "checkbox" }}
-              columns={columns}
-              size="large"
-              tableLayout="fixed"
-              dataSource={users?.data}
-              className="mx-3"
-              pagination={{
-                position: ["bottomLeft"],
-                current: page,
-                hideOnSinglePage: true,
-                pageSize: users?.meta?.per_page,
-                total: users?.meta?.total,
-                onChange: (page) => {
-                  setPage(page);
-                },
-              }}
-              rowKey={(user) => user.id}
-            />
-          </>
-        );
-      }}
-    </PaginationContainer>
+    <div className="overflow-hidden rounded-md bg-white shadow mt-4">
+      <PaginationContainer>
+        {(props) => {
+          const { users, page, setPage } = { ...props };
+          return (
+            <>
+              <Table
+                scroll={{ x: 1300 }}
+                rowSelection={{ type: "checkbox" }}
+                columns={columns}
+                size="large"
+                tableLayout="fixed"
+                dataSource={users?.data}
+                pagination={{
+                  position: ["bottomLeft"],
+                  current: page,
+                  hideOnSinglePage: true,
+                  pageSize: users?.meta?.per_page,
+                  total: users?.meta?.total,
+                  onChange: (page) => {
+                    setPage(page);
+                  },
+                }}
+                rowKey={(user) => user.id}
+              />
+            </>
+          );
+        }}
+      </PaginationContainer>
+    </div>
   );
 };
 

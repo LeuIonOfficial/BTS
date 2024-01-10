@@ -7,7 +7,7 @@ const SalesFilter = () => {
   return (
     <div className="mx-[15px]">
       <Form colon={false}>
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col xl:flex-row justify-between items-end gap-4">
           {filterFields.map((el, index) => {
             return (
               <FormItem

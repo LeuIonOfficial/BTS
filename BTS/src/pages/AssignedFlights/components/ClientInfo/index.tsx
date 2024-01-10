@@ -32,9 +32,11 @@ const ClientInfo = (props: {
   return (
     <div className="flex justify-between items-center">
       {props.clientDetails! ? (
-        <div className="space-x-4">
-          <UserOutlined />
-          <span>{first_name + " " + last_name}</span>
+        <div className="flex flex-col xl:flex-row gap-4">
+          <div className="space-x-4">
+            <UserOutlined />
+            <span>{first_name + " " + last_name}</span>
+          </div>
           <Select
             className="w-[200px]"
             options={emailOptions}

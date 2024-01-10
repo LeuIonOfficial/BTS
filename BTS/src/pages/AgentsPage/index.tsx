@@ -1,21 +1,20 @@
 import { UserAddOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-import { Table, Header, CreateUserDrawer } from "./components";
 import { IUser } from "@models/clientType.ts";
 import { FloatButton } from "antd";
-import { StyledPage } from "@components/index.ts";
+import { CreateUserDrawer, Header, Table } from "./components";
 
 const AgentsPage = () => {
   const [drawerState, setDrawerState] = useState<
     "create" | "update" | "closed"
   >("closed");
   const [userToUpdate, setUserToUpdate] = useState<IUser | undefined>(
-    undefined,
+    undefined
   );
 
   return (
-    <StyledPage>
+    <div className="w-full h-full">
       <Header />
       <Table
         setDrawerState={setDrawerState}
@@ -39,7 +38,7 @@ const AgentsPage = () => {
         setDrawerState={setDrawerState}
         userToUpdate={userToUpdate}
       />
-    </StyledPage>
+    </div>
   );
 };
 

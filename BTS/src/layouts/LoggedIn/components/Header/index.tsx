@@ -1,10 +1,10 @@
-import { Fragment, useContext } from "react";
+import { Api } from "@api/index.ts";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink, useNavigate } from "react-router-dom";
 import routes from "@routes/routes.ts";
-import { Api } from "@api/index.ts";
 import { UserContext } from "@store/index.ts";
+import { Fragment, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -28,7 +28,7 @@ export default function CustomHeader() {
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
         <>
-          <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto px-4 pt-2 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -62,8 +62,6 @@ export default function CustomHeader() {
                       return isActive ? activeLink : nonActiveLink;
                     }}
                   >
-
-
                     Regions
                   </NavLink>
                   <NavLink
@@ -104,7 +102,7 @@ export default function CustomHeader() {
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700",
+                              "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Your Profile
@@ -117,7 +115,7 @@ export default function CustomHeader() {
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700",
+                              "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Settings
@@ -130,7 +128,7 @@ export default function CustomHeader() {
                             href="#"
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700",
+                              "block px-4 py-2 text-sm text-gray-700"
                             )}
                             onClick={async () => {
                               await Api.auth.logout();
