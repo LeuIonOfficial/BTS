@@ -1,7 +1,7 @@
 import { GetFlightsType } from "@models/flights.ts";
 import { Table } from "antd";
 import { Dispatch, SetStateAction } from "react";
-import PaginationContainer from "./components/PaginationContainer";
+import PaginationContainer from "./components/PaginationContainer/index.tsx";
 import { useTableColumns } from "./constants.tsx";
 
 const CustomTable = ({

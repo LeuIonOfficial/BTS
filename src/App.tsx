@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import "./index.scss";
-import { AuthLayout } from "./layouts";
+import { AuthLayout } from "./layouts/index.ts";
 import {
   AgentsPage,
   AssignedFlights,
@@ -10,7 +10,7 @@ import {
   NotFound,
   RequestsPage,
   SalesPage,
-} from "./pages";
+} from "./pages/index.ts";
 import routes from "./routes/routes.ts";
 
 const DashboardRedirect = () => {

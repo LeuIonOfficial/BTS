@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import App from "./App.tsx";
-import queryConfig from "./api/reactQuery";
+import queryConfig from "./api/reactQuery/index.ts";
 import "./index.scss";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import { Divider } from "antd";
+import { ReactNode } from "react";
 import CustomHeader from "./components/Header";
 
 const LoggedIn = ({ children }: { children: ReactNode }) => {

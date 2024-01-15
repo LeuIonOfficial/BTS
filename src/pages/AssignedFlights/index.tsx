@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import useGetFlightById from "@hooks/useGetFlightById.ts";
-import Navigation from "./components/Navigation";
-import ClientInfo from "./components/ClientInfo";
-import FlightDetails from "./components/FlightDetails";
+import Navigation from "./components/Navigation/index.tsx";
+import ClientInfo from "./components/ClientInfo/index.tsx";
+import FlightDetails from "./components/FlightDetails/index.tsx";
 import useGetClientById from "@hooks/useGetClientById.ts";
 import Loader from "@components/Loader";
 import useGetUserById from "@hooks/useGetUserById.ts";

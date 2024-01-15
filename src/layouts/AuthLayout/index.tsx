@@ -1,8 +1,8 @@
 import useGetProfile from "../../hooks/useGetProfile.ts";
-import { UserContext } from "../../store";
+import { UserContext } from "../../store/index.ts";
 import { Navigate, Outlet } from "react-router-dom";
 import routes from "@routes/routes.ts";
-import LoggedIn from "../LoggedIn";
+import LoggedIn from "../LoggedIn/index.tsx";
 import { RingLoader } from "react-spinners";
 const AuthLayout = () => {
   const { profile, isSuccess, isLoading } = useGetProfile();

@@ -1,7 +1,7 @@
 import { IUser } from "@models/clientType.ts";
 import { Table } from "antd";
 import React, { Dispatch, SetStateAction } from "react";
-import PaginationContainer from "./components/PaginationContainer";
+import PaginationContainer from "./components/PaginationContainer/index.tsx";
 import { useColumns } from "./constants.tsx";
 
 const CustomTable: React.FC<{

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { GetFlightsType } from "@models/flights.ts";
 import { FloatButton } from "antd";
-import { Header, RequestDrawer, SubHeader, Table } from "./components/";
+import { Header, RequestDrawer, SubHeader, Table } from "./components";
 
 const RequestsPage = () => {
   const [selectedRowElements, setSelectedRowElements] = useState<

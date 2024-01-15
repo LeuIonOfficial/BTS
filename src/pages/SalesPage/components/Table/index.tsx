@@ -1,6 +1,6 @@
 import { IClient, IUser } from "@models/clientType.ts";
 import { Table } from "antd";
-import PaginationContainer from "./components/PaginationContainer";
+import PaginationContainer from "./components/PaginationContainer/index.tsx";
 import useTableColumns from "./constants.tsx";
 
 export interface ISalesData {
