@@ -1,8 +1,8 @@
-import { GetFlightsType } from "@models/flights.ts";
-import { Avatar, Badge, Divider, Tag } from "antd";
-import { formatDate } from "@helpers/FormatDate/formatDate.ts";
-import { convertFlightClass } from "@helpers/FlightClass";
-import { UserOutlined } from "@ant-design/icons";
+import { GetFlightsType } from '@models/flights.ts';
+import { Avatar, Badge, Divider, Tag } from 'antd';
+import { formatDate } from '@helpers/FormatDate/formatDate.ts';
+import { convertFlightClass } from '@helpers/FlightClass';
+import { UserOutlined } from '@ant-design/icons';
 
 const FlightDetails = (props: { flightDetails: GetFlightsType }) => {
   const info = { ...props.flightDetails?.details };
@@ -15,20 +15,17 @@ const FlightDetails = (props: { flightDetails: GetFlightsType }) => {
             <Avatar
               shape="circle"
               size="large"
-              style={{ backgroundColor: "#059e9b", color: "#fff" }}
+              style={{ backgroundColor: '#059e9b', color: '#fff' }}
             >
               {info.direction}
             </Avatar>
           </Badge>
 
-          <Badge
-            count={+info.adults + +info.child + +info.infants}
-            color="blue"
-          >
+          <Badge count={+info.adults + +info.child + +info.infants} color="blue">
             <Avatar
               shape="circle"
               size="large"
-              style={{ backgroundColor: "#059e9b", color: "#fff" }}
+              style={{ backgroundColor: '#059e9b', color: '#fff' }}
             >
               <UserOutlined />
             </Avatar>

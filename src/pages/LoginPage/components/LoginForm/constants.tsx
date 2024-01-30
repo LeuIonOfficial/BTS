@@ -1,10 +1,10 @@
-import { CustomInput } from "@components/index.ts";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { CustomInput } from '@components/index.ts';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 const useFormItems = () => {
   return [
     {
-      name: "email",
+      name: 'email',
       content: (
         <CustomInput
           label="E-mail"
@@ -16,12 +16,12 @@ const useFormItems = () => {
       rules: [
         {
           required: true,
-          message: "Please, input your email",
+          message: 'Please, input your email',
         },
       ],
     },
     {
-      name: "password",
+      name: 'password',
       content: (
         <CustomInput
           label="Password"
@@ -33,7 +33,7 @@ const useFormItems = () => {
       rules: [
         {
           required: true,
-          message: "Please, input your password",
+          message: 'Please, input your password',
         },
       ],
     },

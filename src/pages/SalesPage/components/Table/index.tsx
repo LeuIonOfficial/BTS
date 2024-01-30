@@ -1,7 +1,7 @@
-import { IClient, IUser } from "@models/clientType.ts";
-import { Table } from "antd";
-import PaginationContainer from "./components/PaginationContainer/index.tsx";
-import useTableColumns from "./constants.tsx";
+import { IClient, IUser } from '@models/clientType.ts';
+import { Table } from 'antd';
+import PaginationContainer from './components/PaginationContainer/index.tsx';
+import useTableColumns from './constants.tsx';
 
 export interface ISalesData {
   client: IClient;
@@ -36,7 +36,7 @@ const CustomTable = () => {
             <Table
               scroll={{ x: 1300 }}
               sticky={true}
-              rowSelection={{ type: "checkbox" }}
+              rowSelection={{ type: 'checkbox' }}
               size="small"
               tableLayout="fixed"
               dataSource={props.sales?.data || []}

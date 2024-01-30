@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction, useContext, useEffect } from "react";
-import { Button, Drawer, Form, Space } from "antd";
-import { useForm } from "antd/es/form/Form";
+import { Dispatch, SetStateAction, useContext, useEffect } from 'react';
+import { Button, Drawer, Form, Space } from 'antd';
+import { useForm } from 'antd/es/form/Form';
 
-import ClientInformation from "./components/ClientInformation";
-import FlightInformation from "./components/FlightInformation";
-import { usePostFlight } from "@hooks/index.ts";
-import { PostFlightType } from "@models/flights.ts";
-import { UserContext } from "@store/index.ts";
+import ClientInformation from './components/ClientInformation';
+import FlightInformation from './components/FlightInformation';
+import { usePostFlight } from '@hooks/index.ts';
+import { PostFlightType } from '@models/flights.ts';
+import { UserContext } from '@store/index.ts';
 
 const CreateRequest = ({
   open,
@@ -64,7 +64,7 @@ const CreateRequest = ({
         layout="horizontal"
         form={form}
         colon={false}
-        labelCol={{ span: "6" }}
+        labelCol={{ span: '6' }}
         labelWrap={true}
         initialValues={{
           first_name: undefined,

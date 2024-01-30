@@ -1,6 +1,6 @@
-import { Button, Form } from "antd";
-import FormItem from "antd/es/form/FormItem";
-import { useFilterFields } from "./constants.tsx";
+import { Button, Form } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import { useFilterFields } from './constants.tsx';
 
 const SalesFilter = () => {
   const filterFields = useFilterFields();
@@ -10,12 +10,7 @@ const SalesFilter = () => {
         <div className="flex flex-col xl:flex-row justify-between items-end gap-4">
           {filterFields.map((el, index) => {
             return (
-              <FormItem
-                key={index}
-                label={el.label}
-                name={el.name}
-                className={el.className}
-              >
+              <FormItem key={index} label={el.label} name={el.name} className={el.className}>
                 {el.render}
               </FormItem>
             );

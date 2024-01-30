@@ -1,15 +1,13 @@
-import { notification } from "antd";
-import axios from "axios";
+import { notification } from 'antd';
+import axios from 'axios';
 
 export const $api = axios.create({
   baseURL: import.meta.env.VITE_SECRET_URL,
-  headers: { "Content-Type": "application/json", Accept: "application/json" },
+  headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 });
 
 $api.interceptors.request.use((config) => {
-  config.headers.authorization = `Bearer ${localStorage.getItem(
-    "ccpx_access_token"
-  )}`;
+  config.headers.authorization = `Bearer ${localStorage.getItem('ccpx_access_token')}`;
   return config;
 });
 
@@ -19,12 +17,12 @@ $api.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      notification.error({ message: "Unauthorized user" });
+      notification.error({ message: 'Unauthorized user' });
     }
 
     if (error.response.status === 404) {
-      notification.error({ message: "Data not found" });
+      notification.error({ message: 'Data not found' });
     }
     return error;
-  }
+  },
 );

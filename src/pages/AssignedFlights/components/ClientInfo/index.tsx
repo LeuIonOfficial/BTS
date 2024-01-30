@@ -1,5 +1,5 @@
-import { EditOutlined, UserOutlined } from "@ant-design/icons";
-import { Checkbox, Select, Tag } from "antd";
+import { EditOutlined, UserOutlined } from '@ant-design/icons';
+import { Checkbox, Select, Tag } from 'antd';
 
 const ClientInfo = (props: {
   clientDetails:
@@ -35,18 +35,10 @@ const ClientInfo = (props: {
         <div className="flex flex-col xl:flex-row gap-4">
           <div className="space-x-4">
             <UserOutlined />
-            <span>{first_name + " " + last_name}</span>
+            <span>{first_name + ' ' + last_name}</span>
           </div>
-          <Select
-            className="w-[200px]"
-            options={emailOptions}
-            defaultValue={emails[0]}
-          />
-          <Select
-            className="w-[200px]"
-            options={phoneOptions}
-            defaultValue={phones[0]}
-          />
+          <Select className="w-[200px]" options={emailOptions} defaultValue={emails[0]} />
+          <Select className="w-[200px]" options={phoneOptions} defaultValue={phones[0]} />
           <EditOutlined className="" />
         </div>
       ) : (
@@ -54,7 +46,7 @@ const ClientInfo = (props: {
       )}
       <Checkbox>Conversion</Checkbox>
       {name! && (
-        <Tag color={"default"} className="text-sm">
+        <Tag color={'default'} className="text-sm">
           {name}
         </Tag>
       )}

@@ -1,13 +1,13 @@
-import { Col, DatePicker, Input, InputNumber, Row, Select } from "antd";
-import FormItem from "antd/es/form/FormItem";
-import FormList from "antd/es/form/FormList";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { rules } from "../ClientInformation";
+import { Col, DatePicker, Input, InputNumber, Row, Select } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import FormList from 'antd/es/form/FormList';
+import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { rules } from '../ClientInformation';
 
 const FlightInformation = () => {
   return (
     <>
-      <FormList name={"details"}>
+      <FormList name={'details'}>
         {(fields, { add, remove }) => {
           return (
             <>
@@ -35,19 +35,17 @@ const FlightInformation = () => {
                           {index > 0 ? (
                             <div
                               style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
                               }}
                             >
-                              <h2 className="m-0 font-bold text-xl">
-                                Flight Details
-                              </h2>
+                              <h2 className="m-0 font-bold text-xl">Flight Details</h2>
                               <DeleteOutlined
                                 style={{
-                                  color: "#059e9b",
-                                  marginRight: "15px",
+                                  color: '#059e9b',
+                                  marginRight: '15px',
                                 }}
                                 onClick={() => remove(field.name)}
                               />
@@ -55,19 +53,17 @@ const FlightInformation = () => {
                           ) : (
                             <div
                               style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
                               }}
                             >
-                              <h2 className="m-0 font-bold text-xl">
-                                Flight Details
-                              </h2>
+                              <h2 className="m-0 font-bold text-xl">Flight Details</h2>
                               <PlusOutlined
                                 style={{
-                                  color: "#059e9b",
-                                  marginRight: "15px",
+                                  color: '#059e9b',
+                                  marginRight: '15px',
                                 }}
                                 onClick={() => add()}
                               />
@@ -80,7 +76,7 @@ const FlightInformation = () => {
                       <Col span={12}>
                         <FormItem
                           label="From"
-                          name={[field.name, "iata_from"]}
+                          name={[field.name, 'iata_from']}
                           key={field.key}
                           rules={rules}
                         >
@@ -90,14 +86,14 @@ const FlightInformation = () => {
                       <Col span={12}>
                         <FormItem
                           label="Flight class"
-                          name={[field.name, "flight_class"]}
+                          name={[field.name, 'flight_class']}
                           rules={rules}
                         >
                           <Select
                             options={[
                               {
-                                label: "Business",
-                                value: "business",
+                                label: 'Business',
+                                value: 'business',
                               },
                             ]}
                           ></Select>
@@ -108,7 +104,7 @@ const FlightInformation = () => {
                       <Col span={12}>
                         <FormItem
                           label="To"
-                          name={[field.name, "iata_to"]}
+                          name={[field.name, 'iata_to']}
                           key={field.key}
                           rules={rules}
                         >
@@ -118,14 +114,11 @@ const FlightInformation = () => {
                       <Col span={12}>
                         <FormItem
                           label="Adults"
-                          name={[field.name, "adults"]}
+                          name={[field.name, 'adults']}
                           rules={rules}
                           initialValue={1}
                         >
-                          <InputNumber
-                            min={0}
-                            style={{ width: "100%" }}
-                          ></InputNumber>
+                          <InputNumber min={0} style={{ width: '100%' }}></InputNumber>
                         </FormItem>
                       </Col>
                     </Row>
@@ -133,38 +126,24 @@ const FlightInformation = () => {
                       <Col span={12}>
                         <FormItem
                           label="Pick a date"
-                          name={[field.name, "departure_date"]}
+                          name={[field.name, 'departure_date']}
                           key={field.key}
                           rules={rules}
                         >
-                          <DatePicker style={{ width: "100%" }} />
+                          <DatePicker style={{ width: '100%' }} />
                         </FormItem>
                       </Col>
                       <Col span={12}>
-                        <FormItem
-                          label="Child"
-                          name={[field.name, "child"]}
-                          initialValue={0}
-                        >
-                          <InputNumber
-                            min={0}
-                            style={{ width: "100%" }}
-                          ></InputNumber>
+                        <FormItem label="Child" name={[field.name, 'child']} initialValue={0}>
+                          <InputNumber min={0} style={{ width: '100%' }}></InputNumber>
                         </FormItem>
                       </Col>
                     </Row>
                     <Row>
                       <Col span={12}></Col>
                       <Col span={12}>
-                        <FormItem
-                          label="Infants"
-                          name={[field.name, "infants"]}
-                          initialValue={0}
-                        >
-                          <InputNumber
-                            min={0}
-                            style={{ width: "100%" }}
-                          ></InputNumber>
+                        <FormItem label="Infants" name={[field.name, 'infants']} initialValue={0}>
+                          <InputNumber min={0} style={{ width: '100%' }}></InputNumber>
                         </FormItem>
                       </Col>
                     </Row>

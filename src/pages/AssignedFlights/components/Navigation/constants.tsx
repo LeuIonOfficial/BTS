@@ -1,27 +1,26 @@
-import { ClientRequest, FlightDetails, FollowUp, PriceQuote } from "./pages";
-import { GetFlightsType } from "@models/flights.ts";
-import { useQueryClient } from "@tanstack/react-query";
-import { AxiosResponse } from "axios";
-import { Empty, FloatButton } from "antd";
-import { useState } from "react";
-import { RequestDrawer } from "../../../RequestsPage/components";
-import { PlusOutlined } from "@ant-design/icons";
+import { ClientRequest, FlightDetails, FollowUp, PriceQuote } from './pages';
+import { GetFlightsType } from '@models/flights.ts';
+import { useQueryClient } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
+import { Empty, FloatButton } from 'antd';
+import { useState } from 'react';
+import { RequestDrawer } from '../../../RequestsPage/components';
+import { PlusOutlined } from '@ant-design/icons';
 
 export const useGetPageObject: () => {
-  "follow-up": JSX.Element;
-  "client-request": JSX.Element;
-  "flight-details": JSX.Element;
-  "price-quote": JSX.Element;
+  'follow-up': JSX.Element;
+  'client-request': JSX.Element;
+  'flight-details': JSX.Element;
+  'price-quote': JSX.Element;
 } = () => {
   const queryClient = useQueryClient();
-  const flight: GetFlightsType = queryClient.getQueryData<AxiosResponse>([
-    "flightDetails",
-  ])?.data.data;
-  const client = queryClient.getQueryData<AxiosResponse>(["client"])?.data.data;
+  const flight: GetFlightsType = queryClient.getQueryData<AxiosResponse>(['flightDetails'])?.data
+    .data;
+  const client = queryClient.getQueryData<AxiosResponse>(['client'])?.data.data;
   const [drawerState, setDrawerState] = useState<boolean>(false);
 
   return {
-    "flight-details": (
+    'flight-details': (
       <>
         {flight! ? (
           flight.details.flights.map((element, index: number) => {
@@ -40,11 +39,7 @@ export const useGetPageObject: () => {
           </div>
         )}
 
-        <RequestDrawer
-          open={drawerState}
-          setDrawerState={setDrawerState}
-          clientDetails={client}
-        />
+        <RequestDrawer open={drawerState} setDrawerState={setDrawerState} clientDetails={client} />
         <FloatButton
           type="primary"
           shape="circle"
@@ -60,25 +55,25 @@ export const useGetPageObject: () => {
         />
       </>
     ),
-    "client-request": <ClientRequest />,
-    "price-quote": <PriceQuote />,
-    "follow-up": <FollowUp />,
+    'client-request': <ClientRequest />,
+    'price-quote': <PriceQuote />,
+    'follow-up': <FollowUp />,
   };
 };
 
 export const useTabs = (): { name: string; href: string; key: string }[] => {
   return [
     {
-      key: "1",
-      name: "Client Request",
-      href: "client-request",
+      key: '1',
+      name: 'Client Request',
+      href: 'client-request',
     },
-    { name: "Flight Details", href: "flight-details", key: "2" },
-    { name: "Price Quote", href: "price-quote", key: "3" },
-    { name: "Follow Up", href: "follow-up", key: "4" },
+    { name: 'Flight Details', href: 'flight-details', key: '2' },
+    { name: 'Price Quote', href: 'price-quote', key: '3' },
+    { name: 'Follow Up', href: 'follow-up', key: '4' },
   ];
 };
 
 export function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }

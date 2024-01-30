@@ -1,6 +1,6 @@
-import { Button, Result } from "antd";
-import { useNavigate } from "react-router-dom";
-import routes from "@routes/routes.ts";
+import { Button, Result } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import routes from '@routes/routes.ts';
 
 const NotFound = () => {
   const navigate = useNavigate();

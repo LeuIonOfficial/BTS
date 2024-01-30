@@ -1,7 +1,7 @@
-import routes from "@routes/routes.ts";
-import { generatePath, NavLink, useParams } from "react-router-dom";
+import routes from '@routes/routes.ts';
+import { generatePath, NavLink, useParams } from 'react-router-dom';
 
-import { useTabs, classNames } from "./constants.tsx";
+import { useTabs, classNames } from './constants.tsx';
 
 export default function Navigation() {
   const { id } = useParams();
@@ -38,9 +38,9 @@ export default function Navigation() {
                   className={({ isActive }) =>
                     classNames(
                       isActive
-                        ? "border-[#059e9b] text-[#059e9b]"
-                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                      "whitespace-nowrap border-b-2 px-1 pb-3 text-sm font-medium",
+                        ? 'border-[#059e9b] text-[#059e9b]'
+                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                      'whitespace-nowrap border-b-2 px-1 pb-3 text-sm font-medium',
                     )
                   }
                 >

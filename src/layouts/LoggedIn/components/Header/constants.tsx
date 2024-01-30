@@ -1,19 +1,19 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { MenuProps } from "antd";
+import { NavLink, useNavigate } from 'react-router-dom';
+import { MenuProps } from 'antd';
 
-import routes from "@routes/routes.ts";
-import { Api } from "@api/index.ts";
-import { LogoutOutlined } from "@ant-design/icons";
+import routes from '@routes/routes.ts';
+import { Api } from '@api/index.ts';
+import { LogoutOutlined } from '@ant-design/icons';
 
 export const useHeaderItems = () => {
   const nonActiveLink: string =
-    "text-[16px] text-greenMain ml-2 p-2 hover:rounded-md hover:text-white hover:bg-greenMain";
+    'text-[16px] text-greenMain ml-2 p-2 hover:rounded-md hover:text-white hover:bg-greenMain';
   const activeLink: string =
-    "text-[16px] text-white ml-2 p-2 rounded-md bg-greenMain hover:text-white";
+    'text-[16px] text-white ml-2 p-2 rounded-md bg-greenMain hover:text-white';
 
   return [
     {
-      name: "requests",
+      name: 'requests',
       content: (
         <NavLink
           to={routes.authenticated.requests}
@@ -26,7 +26,7 @@ export const useHeaderItems = () => {
       ),
     },
     {
-      name: "sales",
+      name: 'sales',
       content: (
         <NavLink
           to={routes.authenticated.sales}
@@ -39,7 +39,7 @@ export const useHeaderItems = () => {
       ),
     },
     {
-      name: "agents",
+      name: 'agents',
       content: (
         <NavLink
           to={routes.authenticated.agents}
@@ -52,7 +52,7 @@ export const useHeaderItems = () => {
       ),
     },
     {
-      name: "regions",
+      name: 'regions',
       content: (
         <NavLink
           to="/"
@@ -65,10 +65,10 @@ export const useHeaderItems = () => {
       ),
     },
     {
-      name: "airports",
+      name: 'airports',
       content: (
         <NavLink
-          to={"/"}
+          to={'/'}
           className={({ isActive }) => {
             return isActive ? activeLink : nonActiveLink;
           }}
@@ -78,10 +78,10 @@ export const useHeaderItems = () => {
       ),
     },
     {
-      name: "export_clients",
+      name: 'export_clients',
       content: (
         <NavLink
-          to={"/"}
+          to={'/'}
           className={({ isActive }) => {
             return isActive ? activeLink : nonActiveLink;
           }}
@@ -93,7 +93,7 @@ export const useHeaderItems = () => {
   ];
 };
 
-export const useDropdownItems = (): MenuProps["items"] => {
+export const useDropdownItems = (): MenuProps['items'] => {
   const navigate = useNavigate();
   return [
     {
@@ -101,7 +101,7 @@ export const useDropdownItems = (): MenuProps["items"] => {
         <span
           onClick={async () => {
             await Api.auth.logout();
-            navigate("/login");
+            navigate('/login');
           }}
           className="flex items-center justify-evenly"
         >
@@ -109,7 +109,7 @@ export const useDropdownItems = (): MenuProps["items"] => {
           <span className="text-[16px] ml-[10px]">Logout</span>
         </span>
       ),
-      key: "0",
+      key: '0',
     },
   ];
 };

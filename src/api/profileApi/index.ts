@@ -1,7 +1,7 @@
-import { $api } from "@api/http";
+import { $api } from '@api/http';
 export class profileApi {
   async getProfile() {
-    const response = await $api.get("/api/me");
+    const response = await $api.get('/api/me');
 
     return response.data;
   }

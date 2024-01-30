@@ -1,12 +1,12 @@
-import { Button, Form, notification } from "antd";
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Button, Form, notification } from 'antd';
+import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { RightOutlined } from "@ant-design/icons";
-import { Api } from "@api/index.ts";
-import background from "@assets/183355.jpg";
-import routes from "@routes/routes.ts";
-import useFormItems from "./constants.tsx";
+import { RightOutlined } from '@ant-design/icons';
+import { Api } from '@api/index.ts';
+import background from '@assets/183355.jpg';
+import routes from '@routes/routes.ts';
+import useFormItems from './constants.tsx';
 
 const LoginForm: FC = () => {
   const items = useFormItems();
@@ -14,28 +14,21 @@ const LoginForm: FC = () => {
   const [form] = Form.useForm();
   const [buttonStatus, setButtonStatus] = useState<boolean>(false);
 
-  const handleSubmitForm = async (values: {
-    email: string;
-    password: string;
-  }) => {
+  const handleSubmitForm = async (values: { email: string; password: string }) => {
     setButtonStatus(true);
     try {
       await Api.auth.login(values);
       navigate(routes.authenticated.requests);
       setButtonStatus(false);
     } catch {
-      notification.error({ message: "Invalid credentials" });
+      notification.error({ message: 'Invalid credentials' });
       setButtonStatus(false);
     }
   };
 
   return (
     <div className="overflow-hidden flex items-center h-[100vh]">
-      <img
-        src={background as string}
-        alt="plane"
-        className="w-full h-full absolute -z-10"
-      />
+      <img src={background as string} alt="plane" className="w-full h-full absolute -z-10" />
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between xl:flex-row">
           <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
@@ -44,8 +37,8 @@ const LoginForm: FC = () => {
               Fly with <span className="text-teal-accent-400">BTS</span>
             </h2>
             <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+              laudan, totam rem aperiam, eaque ipsa quae.
             </p>
             <a
               href="/"
@@ -75,11 +68,7 @@ const LoginForm: FC = () => {
                     <circle cx="1" cy="1" r=".7" />
                   </pattern>
                 </defs>
-                <rect
-                  fill="url(#766323e1-e594-4ffd-a688-e7275079d540)"
-                  width="52"
-                  height="24"
-                />
+                <rect fill="url(#766323e1-e594-4ffd-a688-e7275079d540)" width="52" height="24" />
               </svg>
               <div className="relative bg-white rounded-[8px] shadow-2xl sm:px-10 pt-10">
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
@@ -95,12 +84,7 @@ const LoginForm: FC = () => {
                   {items.map((item, index) => {
                     const { name, rules, content } = item;
                     return (
-                      <Form.Item
-                        name={name}
-                        rules={rules}
-                        key={index}
-                        className="my-6"
-                      >
+                      <Form.Item name={name} rules={rules} key={index} className="my-6">
                         {content}
                       </Form.Item>
                     );

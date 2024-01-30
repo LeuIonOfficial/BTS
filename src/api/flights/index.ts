@@ -1,19 +1,15 @@
-import { AxiosResponse } from "axios";
+import { AxiosResponse } from 'axios';
 
-import { $api } from "@api/http";
-import {
-  GetFlightsParamsType,
-  GetFlightsType,
-  PostFlightType,
-} from "@models/flights.ts";
-import { ServerResponseType } from "@models/serverResponse.ts";
-import { notification } from "antd";
+import { $api } from '@api/http';
+import { GetFlightsParamsType, GetFlightsType, PostFlightType } from '@models/flights.ts';
+import { ServerResponseType } from '@models/serverResponse.ts';
+import { notification } from 'antd';
 
 export class Flights {
   async getFlights(
-    params: GetFlightsParamsType
+    params: GetFlightsParamsType,
   ): Promise<AxiosResponse<ServerResponseType<GetFlightsType>>> {
-    return $api.get("/api/flights", {
+    return $api.get('/api/flights', {
       params: {
         ...params,
       },
@@ -25,7 +21,7 @@ export class Flights {
   }
 
   async postFlight(data: PostFlightType) {
-    const response = await $api.post("/api/flights", data).catch((e) => e);
+    const response = await $api.post('/api/flights', data).catch((e) => e);
     if (response.status >= 200 && response.status < 300) {
       notification.success({
         message: `Flight request successfully created`,

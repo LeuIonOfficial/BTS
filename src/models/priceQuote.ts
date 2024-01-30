@@ -1,4 +1,4 @@
-import { FlightDetailsType } from "@models/flights.ts";
+import { FlightDetailsType } from '@models/flights.ts';
 
 export type PriceQuoteType = {
   id: number;

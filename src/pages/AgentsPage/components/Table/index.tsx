@@ -1,11 +1,11 @@
-import { IUser } from "@models/clientType.ts";
-import { Table } from "antd";
-import React, { Dispatch, SetStateAction } from "react";
-import PaginationContainer from "./components/PaginationContainer/index.tsx";
-import { useColumns } from "./constants.tsx";
+import { IUser } from '@models/clientType.ts';
+import { Table } from 'antd';
+import React, { Dispatch, SetStateAction } from 'react';
+import PaginationContainer from './components/PaginationContainer/index.tsx';
+import { useColumns } from './constants.tsx';
 
 const CustomTable: React.FC<{
-  setDrawerState: Dispatch<SetStateAction<"create" | "update" | "closed">>;
+  setDrawerState: Dispatch<SetStateAction<'create' | 'update' | 'closed'>>;
   setUserToUpdate: Dispatch<SetStateAction<IUser | undefined>>;
 }> = ({ setDrawerState, setUserToUpdate }) => {
   const columns = useColumns(setDrawerState, setUserToUpdate);
@@ -19,13 +19,13 @@ const CustomTable: React.FC<{
             <>
               <Table
                 scroll={{ x: 1300 }}
-                rowSelection={{ type: "checkbox" }}
+                rowSelection={{ type: 'checkbox' }}
                 columns={columns}
                 size="large"
                 tableLayout="fixed"
                 dataSource={users?.data}
                 pagination={{
-                  position: ["bottomLeft"],
+                  position: ['bottomLeft'],
                   current: page,
                   hideOnSinglePage: true,
                   pageSize: users?.meta?.per_page,

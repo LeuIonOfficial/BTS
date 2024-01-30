@@ -1,4 +1,4 @@
-import { RingLoader } from "react-spinners";
+import { RingLoader } from 'react-spinners';
 
 const Loader = () => (
   <div className="flex justify-center items-center flex-col">

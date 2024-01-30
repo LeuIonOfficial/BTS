@@ -1,5 +1,5 @@
-import { ArrowUpOutlined, BellOutlined } from "@ant-design/icons";
-import { Card, Col, Row, Statistic } from "antd";
+import { ArrowUpOutlined, BellOutlined } from '@ant-design/icons';
+import { Card, Col, Row, Statistic } from 'antd';
 
 const SalesSubHeader = () => {
   return (
@@ -10,7 +10,7 @@ const SalesSubHeader = () => {
             <Statistic
               title="Active"
               value={3000}
-              valueStyle={{ color: "#059e9b" }}
+              valueStyle={{ color: '#059e9b' }}
               prefix={<ArrowUpOutlined />}
             />
           </Card>
@@ -20,7 +20,7 @@ const SalesSubHeader = () => {
             <Statistic
               title="Rejected"
               value={1500}
-              valueStyle={{ color: "#cf1322" }}
+              valueStyle={{ color: '#cf1322' }}
               prefix={<BellOutlined />}
             />
           </Card>

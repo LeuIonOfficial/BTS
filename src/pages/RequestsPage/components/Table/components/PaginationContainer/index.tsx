@@ -1,7 +1,7 @@
-import { Dispatch, FC, ReactElement, SetStateAction, useState } from "react";
-import { useGetFlights } from "@hooks/index.ts";
-import { GetFlightsType } from "@models/flights.ts";
-import { ServerResponseType } from "@models/serverResponse.ts";
+import { Dispatch, FC, ReactElement, SetStateAction, useState } from 'react';
+import { useGetFlights } from '@hooks/index.ts';
+import { GetFlightsType } from '@models/flights.ts';
+import { ServerResponseType } from '@models/serverResponse.ts';
 
 type PaginationProps = {
   page: number;

@@ -1,6 +1,6 @@
-import SalesHeader from "./components/Header";
-import SalesSubHeader from "./components/SubHeader";
-import CustomTable from "./components/Table";
+import SalesHeader from './components/Header';
+import SalesSubHeader from './components/SubHeader';
+import CustomTable from './components/Table';
 
 const SalesPage = () => {
   return (

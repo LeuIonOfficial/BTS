@@ -1,9 +1,9 @@
-import { Col, Input, Row, Select } from "antd";
-import FormItem from "antd/es/form/FormItem";
-import FormList from "antd/es/form/FormList";
-import { DeleteOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
-import TextArea from "antd/es/input/TextArea";
-import { marketingSource } from "@helpers/MarketingSource";
+import { Col, Input, Row, Select } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import FormList from 'antd/es/form/FormList';
+import { DeleteOutlined, PlusOutlined, UserOutlined } from '@ant-design/icons';
+import TextArea from 'antd/es/input/TextArea';
+import { marketingSource } from '@helpers/MarketingSource';
 
 export const rules = [
   {
@@ -17,11 +17,7 @@ const ClientInformation = () => {
     <>
       <Row>
         <Col span={12}>
-          <FormItem
-            label={
-              <UserOutlined style={{ fontSize: "25px", fontWeight: 700 }} />
-            }
-          >
+          <FormItem label={<UserOutlined style={{ fontSize: '25px', fontWeight: 700 }} />}>
             <h2 className="m-0 font-bold text-xl">Personal Info</h2>
           </FormItem>
         </Col>
@@ -47,26 +43,18 @@ const ClientInformation = () => {
                   {fields.map((field, index) => {
                     return (
                       <div key={index}>
-                        <FormItem
-                          label={`Email`}
-                          name={[field.name]}
-                          key={field.key}
-                          rules={rules}
-                        >
+                        <FormItem label={`Email`} name={[field.name]} key={field.key} rules={rules}>
                           {index === 0 ? (
                             <Input
                               suffix={
-                                <PlusOutlined
-                                  style={{ color: "#059e9b" }}
-                                  onClick={() => add()}
-                                />
+                                <PlusOutlined style={{ color: '#059e9b' }} onClick={() => add()} />
                               }
                             />
                           ) : (
                             <Input
                               suffix={
                                 <DeleteOutlined
-                                  style={{ color: "#059e9b" }}
+                                  style={{ color: '#059e9b' }}
                                   onClick={() => remove(field?.name)}
                                 />
                               }
@@ -89,26 +77,18 @@ const ClientInformation = () => {
                   {fields.map((field, index) => {
                     return (
                       <div key={index}>
-                        <FormItem
-                          label={`Phone`}
-                          name={[field.name]}
-                          key={field.key}
-                          rules={rules}
-                        >
+                        <FormItem label={`Phone`} name={[field.name]} key={field.key} rules={rules}>
                           {index === 0 ? (
                             <Input
                               suffix={
-                                <PlusOutlined
-                                  style={{ color: "#059e9b" }}
-                                  onClick={() => add()}
-                                />
+                                <PlusOutlined style={{ color: '#059e9b' }} onClick={() => add()} />
                               }
                             />
                           ) : (
                             <Input
                               suffix={
                                 <DeleteOutlined
-                                  style={{ color: "#059e9b" }}
+                                  style={{ color: '#059e9b' }}
                                   onClick={() => remove(field?.name)}
                                 />
                               }
@@ -126,14 +106,8 @@ const ClientInformation = () => {
       </Row>
       <Row>
         <Col span={12}>
-          <FormItem
-            label="Marketing source"
-            name="marketing_source"
-            rules={rules}
-          >
-            <Select
-              options={marketingSource.map((el) => ({ name: el, value: el }))}
-            />
+          <FormItem label="Marketing source" name="marketing_source" rules={rules}>
+            <Select options={marketingSource.map((el) => ({ name: el, value: el }))} />
           </FormItem>
         </Col>
         <Col span={12}>

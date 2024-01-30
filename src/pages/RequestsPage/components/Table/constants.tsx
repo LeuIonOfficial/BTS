@@ -1,26 +1,26 @@
-import { GetFlightsType } from "@models/flights.ts";
-import { formatDate } from "@helpers/FormatDate/formatDate.ts";
-import { DeleteOutlined } from "@ant-design/icons";
-import "./style.css";
-import { Tag } from "antd";
-import { generatePath, useNavigate } from "react-router-dom";
-import routes from "@routes/routes.ts";
-import { convertFlightClass } from "@helpers/FlightClass";
+import { GetFlightsType } from '@models/flights.ts';
+import { formatDate } from '@helpers/FormatDate/formatDate.ts';
+import { DeleteOutlined } from '@ant-design/icons';
+import './style.css';
+import { Tag } from 'antd';
+import { generatePath, useNavigate } from 'react-router-dom';
+import routes from '@routes/routes.ts';
+import { convertFlightClass } from '@helpers/FlightClass';
 
 export const useTableColumns = () => {
   const navigate = useNavigate();
   return [
     {
-      key: "1",
-      title: "Request Created",
+      key: '1',
+      title: 'Request Created',
       render: (_: unknown, record: GetFlightsType) => {
         return <span>{formatDate(record.created_at)}</span>;
       },
-      width: "9%",
+      width: '9%',
     },
     {
-      key: "2",
-      title: "Lead ID",
+      key: '2',
+      title: 'Lead ID',
       render: (_: unknown, record: GetFlightsType) => {
         return (
           <span
@@ -29,7 +29,7 @@ export const useTableColumns = () => {
               navigate(
                 generatePath(routes.authenticated.assignedFlights, {
                   id: record.id,
-                  page: "flight-details",
+                  page: 'flight-details',
                 }),
               )
             }
@@ -38,66 +38,64 @@ export const useTableColumns = () => {
           </span>
         );
       },
-      width: "5%",
+      width: '5%',
     },
     {
-      key: "3",
-      title: "Customer Name",
-      width: "7%",
+      key: '3',
+      title: 'Customer Name',
+      width: '7%',
       render: (_: unknown, record: GetFlightsType) => {
-        return (
-          <span>{`${record.client.first_name} ${record.client.last_name}`}</span>
-        );
+        return <span>{`${record.client.first_name} ${record.client.last_name}`}</span>;
       },
     },
     {
-      key: "4",
+      key: '4',
 
-      title: "Trip Type",
+      title: 'Trip Type',
       render: (_: unknown, record: GetFlightsType) => {
         return <span>{`${record.details.direction}`}</span>;
       },
-      width: "5%",
+      width: '5%',
     },
     {
-      key: "5",
-      title: "Request Details",
+      key: '5',
+      title: 'Request Details',
     },
     {
-      key: "6",
-      title: "Cabin",
-      width: "7%",
+      key: '6',
+      title: 'Cabin',
+      width: '7%',
       render: (_: unknown, record: GetFlightsType) => {
         return convertFlightClass[record.details.flight_class];
       },
     },
     {
-      key: "7",
-      title: "Marketing Type",
+      key: '7',
+      title: 'Marketing Type',
       render: (_: unknown, record: GetFlightsType) => {
         return record.marketing_source;
       },
-      width: "7%",
+      width: '7%',
     },
     {
-      key: "8",
-      title: "Marketing Campaign",
+      key: '8',
+      title: 'Marketing Campaign',
       render: () => {
         return <span>No info</span>;
       },
-      width: "8%",
+      width: '8%',
     },
     {
-      key: "8",
-      title: "Agent Name",
-      width: "7%",
+      key: '8',
+      title: 'Agent Name',
+      width: '7%',
       render: (_: unknown, record: GetFlightsType) => {
         return <span>{record.user.name}</span>;
       },
     },
     {
-      key: "9",
-      title: "Client Email",
+      key: '9',
+      title: 'Client Email',
       render: (_: unknown, record: GetFlightsType) => {
         return record.client.emails.map((el, index) => {
           return (
@@ -107,11 +105,11 @@ export const useTableColumns = () => {
           );
         });
       },
-      width: "18%",
+      width: '18%',
     },
     {
-      key: "10",
-      title: "Client Phone",
+      key: '10',
+      title: 'Client Phone',
       render: (_: unknown, record: GetFlightsType) => {
         return record.client.phones.map((el, index) => {
           return (
@@ -123,12 +121,12 @@ export const useTableColumns = () => {
       },
     },
     {
-      key: "11",
-      title: " ",
+      key: '11',
+      title: ' ',
       render: () => {
         return <DeleteOutlined className="hover_icon" />;
       },
-      width: "3%",
+      width: '3%',
     },
   ];
 };

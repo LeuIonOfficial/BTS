@@ -1,5 +1,5 @@
-import { Typography } from "antd";
-import SalesFilter from "../RequestsFilter";
+import { Typography } from 'antd';
+import SalesFilter from '../RequestsFilter';
 
 const CustomTableHeader = () => {
   return (

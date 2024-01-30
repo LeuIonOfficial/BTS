@@ -1,5 +1,5 @@
-import { Typography } from "antd";
-import SalesFilter from "../SalesFilter";
+import { Typography } from 'antd';
+import SalesFilter from '../SalesFilter';
 
 const SalesHeader = () => {
   return (

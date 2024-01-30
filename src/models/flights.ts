@@ -1,4 +1,4 @@
-import { IClient, IDeparture, IUser } from "@models/clientType.ts";
+import { IClient, IDeparture, IUser } from '@models/clientType.ts';
 
 export interface GetFlightsParamsType {
   page: number;
@@ -9,7 +9,7 @@ export interface FlightDetailsType {
   adults: number;
   child: number;
   direction: string;
-  flight_class: "premium-economy" | "business" | "first";
+  flight_class: 'premium-economy' | 'business' | 'first';
   flights: IDeparture[];
   infants: number;
   price: number;

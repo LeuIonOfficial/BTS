@@ -1,5 +1,5 @@
-import { Dispatch, FC, ReactElement, SetStateAction, useState } from "react";
-import useGetSales from "@hooks/useGetSales.ts";
+import { Dispatch, FC, ReactElement, SetStateAction, useState } from 'react';
+import useGetSales from '@hooks/useGetSales.ts';
 
 type PaginationProps = {
   page: number;

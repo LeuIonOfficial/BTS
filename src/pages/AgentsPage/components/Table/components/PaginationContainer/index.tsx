@@ -1,7 +1,7 @@
-import { Dispatch, FC, ReactElement, SetStateAction, useState } from "react";
-import useGetUsers from "@hooks/useGetUsers.ts";
-import { IUser } from "@models/clientType.ts";
-import { ServerResponseType } from "@models/serverResponse.ts";
+import { Dispatch, FC, ReactElement, SetStateAction, useState } from 'react';
+import useGetUsers from '@hooks/useGetUsers.ts';
+import { IUser } from '@models/clientType.ts';
+import { ServerResponseType } from '@models/serverResponse.ts';
 
 type PaginationProps = {
   page: number;

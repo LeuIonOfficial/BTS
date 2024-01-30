@@ -1,25 +1,25 @@
-import { Api } from "@api/index.ts";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import routes from "@routes/routes.ts";
-import { UserContext } from "@store/index.ts";
-import { Fragment, useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Api } from '@api/index.ts';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import routes from '@routes/routes.ts';
+import { UserContext } from '@store/index.ts';
+import { Fragment, useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
 const activeLink: string =
-  "inline-flex items-center border-b-2 border-[#059e9b] px-1 pt-1 text-sm font-medium text-[#059e9b]";
+  'inline-flex items-center border-b-2 border-[#059e9b] px-1 pt-1 text-sm font-medium text-[#059e9b]';
 const nonActiveLink =
-  "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700";
+  'inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700';
 
 const activeMenuItem =
-  "block border-l-4 border-[#059e9b] bg-[#059e9b]/20 py-2 pl-3 pr-4 text-base font-medium text-[#059e9b]";
+  'block border-l-4 border-[#059e9b] bg-[#059e9b]/20 py-2 pl-3 pr-4 text-base font-medium text-[#059e9b]';
 
 const nonActiveMenuItem =
-  "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700";
+  'block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700';
 
 export default function CustomHeader() {
   const user = useContext(UserContext);
@@ -57,7 +57,7 @@ export default function CustomHeader() {
                     Agents
                   </NavLink>
                   <NavLink
-                    to={"/  "}
+                    to={'/  '}
                     className={({ isActive }) => {
                       return isActive ? activeLink : nonActiveLink;
                     }}
@@ -65,7 +65,7 @@ export default function CustomHeader() {
                     Regions
                   </NavLink>
                   <NavLink
-                    to={"/"}
+                    to={'/'}
                     className={({ isActive }) => {
                       return isActive ? activeLink : nonActiveLink;
                     }}
@@ -101,8 +101,8 @@ export default function CustomHeader() {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700',
                             )}
                           >
                             Your Profile
@@ -114,8 +114,8 @@ export default function CustomHeader() {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700',
                             )}
                           >
                             Settings
@@ -127,12 +127,12 @@ export default function CustomHeader() {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700',
                             )}
                             onClick={async () => {
                               await Api.auth.logout();
-                              navigate("/login");
+                              navigate('/login');
                             }}
                           >
                             Sign out
@@ -185,7 +185,7 @@ export default function CustomHeader() {
                 Agents
               </NavLink>
               <NavLink
-                to={"/"}
+                to={'/'}
                 className={({ isActive }) => {
                   return isActive ? activeMenuItem : nonActiveMenuItem;
                 }}
@@ -193,7 +193,7 @@ export default function CustomHeader() {
                 Regions
               </NavLink>
               <NavLink
-                to={"/"}
+                to={'/'}
                 className={({ isActive }) => {
                   return isActive ? activeMenuItem : nonActiveMenuItem;
                 }}
@@ -211,12 +211,8 @@ export default function CustomHeader() {
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
-                  </div>
+                  <div className="text-base font-medium text-gray-800">Tom Cook</div>
+                  <div className="text-sm font-medium text-gray-500">tom@example.com</div>
                 </div>
                 <button
                   type="button"

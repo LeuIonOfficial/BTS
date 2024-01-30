@@ -1,15 +1,13 @@
-import { GetFlightsType } from "@models/flights.ts";
-import { Table } from "antd";
-import { Dispatch, SetStateAction } from "react";
-import PaginationContainer from "./components/PaginationContainer/index.tsx";
-import { useTableColumns } from "./constants.tsx";
+import { GetFlightsType } from '@models/flights.ts';
+import { Table } from 'antd';
+import { Dispatch, SetStateAction } from 'react';
+import PaginationContainer from './components/PaginationContainer/index.tsx';
+import { useTableColumns } from './constants.tsx';
 
 const CustomTable = ({
   setSelectedRowElements,
 }: {
-  setSelectedRowElements: Dispatch<
-    SetStateAction<GetFlightsType[] | undefined>
-  >;
+  setSelectedRowElements: Dispatch<SetStateAction<GetFlightsType[] | undefined>>;
 }) => {
   const columns = useTableColumns();
   return (
@@ -25,13 +23,13 @@ const CustomTable = ({
               showHeader={true}
               dataSource={props.flights?.data || []}
               rowSelection={{
-                type: "checkbox",
+                type: 'checkbox',
                 onChange: (_, record: GetFlightsType[]) => {
                   setSelectedRowElements(record);
                 },
               }}
               pagination={{
-                position: ["bottomLeft"],
+                position: ['bottomLeft'],
                 current: props.page,
                 hideOnSinglePage: true,
                 pageSize: props.flights?.meta?.per_page,

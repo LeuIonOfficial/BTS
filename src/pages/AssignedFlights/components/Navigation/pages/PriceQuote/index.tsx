@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import Loader from "@components/Loader";
-import useGetOffers from "@hooks/useGetOffers.ts";
-import { Table } from "antd";
-import { useTableColumns } from "./constants.tsx";
+import Loader from '@components/Loader';
+import useGetOffers from '@hooks/useGetOffers.ts';
+import { Table } from 'antd';
+import { useTableColumns } from './constants.tsx';
 
 const PriceQuote = () => {
   const id = useParams().id as string;
