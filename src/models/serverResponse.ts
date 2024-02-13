@@ -1,5 +1,5 @@
 export interface ServerResponseType<T> {
-  data: T[];
+  data: T;
   links: {
     first: string;
     last: string;

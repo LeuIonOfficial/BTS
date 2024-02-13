@@ -6,8 +6,9 @@ const useGetFlightById = (id?: string | undefined) => {
 
   const { isLoading, data: flightDetails, error } = useQuery(['flightDetails'], query, {
     select: (response) => {
-      return response.data.data;
+      return response?.data.data;
     },
+    enabled: !!id,
   });
 
   return {
