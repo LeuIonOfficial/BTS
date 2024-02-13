@@ -1,4 +1,4 @@
-import { FlightDetailsType } from '@models/flights.ts';
+import { IFlightDetails } from '@models/flights.ts';
 
 export type PriceQuoteType = {
   id: number;
@@ -9,7 +9,7 @@ export type PriceQuoteType = {
   hash: string;
   comment: string;
   dump: string;
-  details: FlightDetailsType;
+  details: IFlightDetails;
   created_at: string;
   packageable: {
     id: number;

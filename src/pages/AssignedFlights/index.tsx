@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import useGetFlightById from '@hooks/useGetFlightById.ts';
 import Navigation from './components/Navigation/index.tsx';
 import ClientInfo from './components/ClientInfo/index.tsx';
-import FlightDetails from './components/FlightDetails/index.tsx';
+import FlightDetailsSection from './components/FlightDetails/index.tsx';
 import useGetClientById from '@hooks/useGetClientById.ts';
 import Loader from '@components/Loader';
 import useGetUserById from '@hooks/useGetUserById.ts';
@@ -10,7 +10,7 @@ import { useGetPageObject } from './components/Navigation/constants.tsx';
 
 const items = [
   { id: 1, content: ClientInfo },
-  { id: 2, content: FlightDetails },
+  { id: 2, content: FlightDetailsSection },
   { id: 3, content: Navigation },
 ];
 
@@ -36,7 +36,7 @@ const AssignedFlights = () => {
         const Content = item.content;
         return (
           <li key={item.id} className="overflow-hidden rounded-md bg-white px-6 py-4 shadow">
-            {
+            {flightDetails && (
               <>
                 <Content
                   clientDetails={clientDetails}
@@ -44,7 +44,7 @@ const AssignedFlights = () => {
                   userDetails={userDetails}
                 />
               </>
-            }
+            )}
           </li>
         );
       })}

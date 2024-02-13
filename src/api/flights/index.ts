@@ -1,7 +1,12 @@
 import { AxiosResponse } from 'axios';
 
 import { $api } from '@api/http';
-import { GetFlightsParamsType, GetFlightsType, PostFlightType } from '@models/flights.ts';
+import {
+  GetFlightsParamsType,
+  GetFlightsType,
+  IFlightDetails,
+  PostFlightType,
+} from '@models/flights.ts';
 import { ServerResponseType } from '@models/serverResponse.ts';
 import { notification } from 'antd';
 
@@ -16,8 +21,12 @@ export class Flights {
     });
   }
 
-  async getFlightById(id: string | undefined) {
-    if (id!) return $api.get(`/api/flights/${id}`).catch((e) => e);
+  async getFlightById(
+    id: string | undefined,
+  ): Promise<AxiosResponse<ServerResponseType<GetFlightsType>> | undefined> {
+    return $api
+      .get<AxiosResponse<ServerResponseType<GetFlightsType>>>(`/api/flights/${id}`)
+      .catch((e) => e);
   }
 
   async postFlight(data: PostFlightType) {

@@ -53,7 +53,7 @@ export const useTableColumns = () => {
 
       title: 'Trip Type',
       render: (_: unknown, record: GetFlightsType) => {
-        return <span>{`${record.details.direction}`}</span>;
+        return <span>{`${record.details.length > 1 ? 'RT' : 'OW'}`}</span>;
       },
       width: '5%',
     },
@@ -66,7 +66,7 @@ export const useTableColumns = () => {
       title: 'Cabin',
       width: '7%',
       render: (_: unknown, record: GetFlightsType) => {
-        return convertFlightClass[record.details.flight_class];
+        return convertFlightClass[record.details[0].flight_class];
       },
     },
     {
@@ -99,7 +99,7 @@ export const useTableColumns = () => {
       render: (_: unknown, record: GetFlightsType) => {
         return record.client.emails.map((el, index) => {
           return (
-            <Tag color="green" key={index}>
+            <Tag color="green" key={index} className="mb-2">
               {el}
             </Tag>
           );
@@ -113,7 +113,7 @@ export const useTableColumns = () => {
       render: (_: unknown, record: GetFlightsType) => {
         return record.client.phones.map((el, index) => {
           return (
-            <Tag color="geekblue" key={index}>
+            <Tag color="geekblue" key={index} className="mb-2">
               {el}
             </Tag>
           );

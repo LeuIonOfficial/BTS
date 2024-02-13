@@ -1,17 +1,15 @@
-import { IDeparture } from '@models/clientType.ts';
-import { FlightDetailsType } from '@models/flights.ts';
+import { IFlightDetails } from '@models/flights.ts';
 import { Badge, Button, DatePicker, Input, Select } from 'antd';
 import dayjs from 'dayjs';
 
-const FlightDetails = ({
+const FlightDetailsPage = ({
   flightDetails,
-  flights,
   index,
 }: {
-  flightDetails: FlightDetailsType;
-  flights: IDeparture;
+  flightDetails: IFlightDetails;
   index: number;
 }) => {
+  const { adults, child, departure_date, iata_from, iata_to, infants, from, to } = flightDetails;
   return (
     <div className="overflow-hidden rounded-md bg-white px-6 py-4 shadow">
       <div className="px-4 flex justify-between items-center sm:px-0">
@@ -36,16 +34,12 @@ const FlightDetails = ({
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <div className="flex gap-4">
                 <Input
-                  addonAfter={flights.from.iata_code}
+                  addonAfter={iata_from}
                   addonBefore="From"
-                  defaultValue={flights.from.airport_name}
+                  defaultValue={from.airport_name}
                 ></Input>
 
-                <Input
-                  addonAfter={flights.to.iata_code}
-                  addonBefore="To"
-                  defaultValue={flights.to.airport_name}
-                ></Input>
+                <Input addonAfter={iata_to} addonBefore="To" defaultValue={to.airport_name}></Input>
               </div>
             </dd>
           </div>
@@ -53,10 +47,7 @@ const FlightDetails = ({
             <dt className="text-sm font-medium leading-6 text-gray-900">Date / Flight Class</dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <div className="flex gap-4">
-                <DatePicker
-                  className="w-full"
-                  defaultValue={dayjs(flights.departure_date, 'YYYY-MM-DD')}
-                />
+                <DatePicker className="w-full" defaultValue={dayjs(departure_date, 'YYYY-MM-DD')} />
 
                 <Select className="w-full"></Select>
               </div>
@@ -67,21 +58,9 @@ const FlightDetails = ({
             <dt className="text-sm font-medium leading-6 text-gray-900">Passengers</dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               <div className="flex space-x-9">
-                <Input
-                  addonAfter="Adults"
-                  type="number"
-                  defaultValue={flightDetails.adults}
-                ></Input>
-                <Input
-                  addonAfter="Children"
-                  type="number"
-                  defaultValue={flightDetails.child}
-                ></Input>
-                <Input
-                  addonAfter="Infants"
-                  type="number"
-                  defaultValue={flightDetails.infants}
-                ></Input>
+                <Input addonAfter="Adults" type="number" defaultValue={adults}></Input>
+                <Input addonAfter="Children" type="number" defaultValue={child}></Input>
+                <Input addonAfter="Infants" type="number" defaultValue={infants}></Input>
               </div>
             </dd>
           </div>
@@ -91,4 +70,4 @@ const FlightDetails = ({
   );
 };
 
-export default FlightDetails;
+export default FlightDetailsPage;

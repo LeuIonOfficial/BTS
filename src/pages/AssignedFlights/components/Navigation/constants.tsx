@@ -1,5 +1,5 @@
-import { ClientRequest, FlightDetails, FollowUp, PriceQuote } from './pages';
-import { GetFlightsType } from '@models/flights.ts';
+import { ClientRequest, FlightDetailsPage, FollowUp, PriceQuote } from './pages';
+import { GetFlightsType, IFlightDetails, PostFlightType } from '@models/flights.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 import { Empty, FloatButton } from 'antd';
@@ -23,15 +23,8 @@ export const useGetPageObject: () => {
     'flight-details': (
       <>
         {flight! ? (
-          flight.details.flights.map((element, index: number) => {
-            return (
-              <FlightDetails
-                flightDetails={flight?.details}
-                key={index}
-                index={index + 1}
-                flights={element}
-              />
-            );
+          flight.details.map((element, index: number) => {
+            return <FlightDetailsPage flightDetails={element} key={index} index={index + 1} />;
           })
         ) : (
           <div className="overflow-hidden rounded-md bg-white px-6 py-4 shadow">

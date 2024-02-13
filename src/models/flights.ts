@@ -1,18 +1,8 @@
-import { IClient, IDeparture, IUser } from '@models/clientType.ts';
+import { IClient, IUser } from '@models/clientType.ts';
 
 export interface GetFlightsParamsType {
   page: number;
   per_page: number;
-}
-
-export interface FlightDetailsType {
-  adults: number;
-  child: number;
-  direction: string;
-  flight_class: 'premium-economy' | 'business' | 'first';
-  flights: IDeparture[];
-  infants: number;
-  price: number;
 }
 
 export interface GetFlightsType {
@@ -21,7 +11,7 @@ export interface GetFlightsType {
   client_id: number;
   comment: string;
   created_at: string;
-  details: FlightDetailsType;
+  details: IFlightDetails[];
   id: number;
   ip_address: string;
   is_conversion: number;
@@ -38,14 +28,30 @@ export interface PostFlightType {
   emails: string[];
   phones: string[];
   marketing_source: string;
-  details: [
-    {
-      adults: string;
-      child: string;
-      infants: string;
-      iata_from: string;
-      iata_to: string;
-      departure_date: string;
-    },
-  ];
+  details: IFlightDetails[];
+}
+
+export interface IFlightDetails {
+  child: number;
+  price: number;
+  adults: number;
+  iata_to: string;
+  infants: number;
+  direction: string;
+  iata_from: string;
+  flight_class: string;
+  departure_date: string;
+  from: IFlightDetailsFromTo;
+  to: IFlightDetailsFromTo;
+}
+
+export interface IFlightDetailsFromTo {
+  id: number;
+  airport_name: string;
+  iata_code: string;
+  city_name: string;
+  state_name: null;
+  country_name: string;
+  region_id: string;
+  is_favorite: number;
 }
