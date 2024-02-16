@@ -28,6 +28,7 @@ export interface PostFlightType {
   emails: string[];
   phones: string[];
   marketing_source: string;
+  flight_direction: string;
   details: IFlightDetails[];
 }
 

@@ -5,9 +5,10 @@ interface IProps {
   children?: ReactNode;
   drawerState: boolean;
   setDrawerState: Dispatch<SetStateAction<boolean>>;
+  data?: any;
 }
 
-const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState }) => {
+const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, data }) => {
   return (
     <Drawer
       forceRender
