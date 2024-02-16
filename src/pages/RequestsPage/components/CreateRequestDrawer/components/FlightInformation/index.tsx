@@ -140,13 +140,7 @@ const FlightInformation = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col span={12}>
-                        <FormItem
-                          label=""
-                          name={[field.name, 'direction']}
-                          initialValue={'OW'}
-                        ></FormItem>
-                      </Col>
+                      <Col span={12}></Col>
                       <Col span={12}>
                         <FormItem label="Infants" name={[field.name, 'infants']} initialValue={0}>
                           <InputNumber min={0} style={{ width: '100%' }}></InputNumber>

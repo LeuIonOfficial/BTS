@@ -84,7 +84,7 @@ const CreateRequest = ({
           ],
         }}
         onFinish={(values: PostFlightType) => {
-          postFlightRequest({ ...values, user_id: user?.id.toString() });
+          postFlightRequest({ ...values, user_id: user?.id.toString(), flight_direction: 'OW' });
         }}
       >
         <ClientInformation />
