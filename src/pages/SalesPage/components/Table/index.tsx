@@ -1,5 +1,5 @@
 import { IClient, IUser } from '@models/clientType.ts';
-import { Table } from 'antd';
+import { Table, TablePaginationConfig } from 'antd';
 import PaginationContainer from './components/PaginationContainer/index.tsx';
 import useTableColumns from './constants.tsx';
 
@@ -37,19 +37,19 @@ const CustomTable = () => {
               scroll={{ x: 1300 }}
               sticky={true}
               rowSelection={{ type: 'checkbox' }}
-              size="small"
+              size="large "
               tableLayout="fixed"
               dataSource={props.sales?.data || []}
               columns={columns}
-              pagination={{
-                current: props.page,
-                hideOnSinglePage: true,
-                pageSize: props.sales?.meta.per_page,
-                total: props.sales?.meta.total,
-                onChange: (page) => {
-                  props.setPage(page);
-                },
-              }}
+              pagination={
+                {
+                  current: props.page,
+                  hideOnSinglePage: true,
+                  pageSize: props.sales?.meta.per_page,
+                  total: props.sales?.meta.total,
+                  onChange: (page: number) => props.setPage(page),
+                } as TablePaginationConfig
+              }
               rowKey="id"
             />
           );

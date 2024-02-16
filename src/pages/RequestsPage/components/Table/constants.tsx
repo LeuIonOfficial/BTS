@@ -3,12 +3,9 @@ import { formatDate } from '@helpers/FormatDate/formatDate.ts';
 import { DeleteOutlined } from '@ant-design/icons';
 import './style.css';
 import { Tag } from 'antd';
-import { generatePath, useNavigate } from 'react-router-dom';
-import routes from '@routes/routes.ts';
 import { convertFlightClass } from '@helpers/FlightClass';
 
 export const useTableColumns = () => {
-  const navigate = useNavigate();
   return [
     {
       key: '1',
@@ -22,21 +19,7 @@ export const useTableColumns = () => {
       key: '2',
       title: 'Lead ID',
       render: (_: unknown, record: GetFlightsType) => {
-        return (
-          <span
-            className="cursor-pointer"
-            onClick={() =>
-              navigate(
-                generatePath(routes.authenticated.assignedFlights, {
-                  id: record.id,
-                  page: 'flight-details',
-                }),
-              )
-            }
-          >
-            {record.id}
-          </span>
-        );
+        return <span>{record.id}</span>;
       },
       width: '5%',
     },
@@ -124,7 +107,7 @@ export const useTableColumns = () => {
       key: '11',
       title: ' ',
       render: () => {
-        return <DeleteOutlined className="hover_icon" />;
+        return <DeleteOutlined className="hover_icon" onClick={(e) => e.stopPropagation()} />;
       },
       width: '3%',
     },

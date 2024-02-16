@@ -8,6 +8,7 @@ const useGetOffers = (id: string) => {
 
   const { isLoading, data: offers } = useQuery(['offers'], query, {
     select: (response) => {
+      console.log('////////////', response);
       return response.data.data;
     },
   });

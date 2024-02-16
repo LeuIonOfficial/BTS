@@ -18,8 +18,15 @@ export const useTableColumns = () => {
       key: '3',
       title: 'Reservation Dump',
       render: (_: unknown, record: PriceQuoteType) => {
-        console.log(record);
-        return <TextArea autoSize value={record?.dump} readOnly />;
+        console.log(record, 'asdasdddddddddddddddddddddddddd');
+        return (
+          <TextArea
+            onDoubleClick={(event) => event.target.select()}
+            autoSize
+            value={record?.dump}
+            readOnly
+          />
+        );
       },
       width: '30%',
     },

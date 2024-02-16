@@ -4,7 +4,7 @@ import useGetSales from '@hooks/useGetSales.ts';
 type PaginationProps = {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
-  sales: SetStateAction<any>;
+  sales: any;
 };
 
 const PaginationContainer: FC<{
