@@ -1,12 +1,25 @@
 import TextArea from 'antd/es/input/TextArea';
-import { Form } from 'antd';
-import { useState } from 'react';
-import useGetDump from '@hooks/useGetDump.ts';
+import { Form, FormInstance } from 'antd';
+import { useEffect, useState } from 'react';
 
-const Dump = ({ flightId, postGetDump }: { flightId: number }) => {
-  const handleChangeInput = (e) => {
-    postGetDump({ flightId, data: { dump: e.target.value } });
+const Dump = ({
+  flightId,
+  postGetDump,
+  form,
+}: {
+  flightId: number;
+  postGetDump: (data: { flightId: number; data: { dump: string } }) => void;
+  form: FormInstance;
+}) => {
+  const [content, setContent] = useState(form.getFieldValue('dump'));
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
   };
+
+  useEffect(() => {
+    postGetDump({ flightId, data: { dump: content } });
+  }, [content]);
 
   return (
     <>

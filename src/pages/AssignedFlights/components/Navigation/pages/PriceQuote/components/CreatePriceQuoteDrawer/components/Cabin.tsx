@@ -1,8 +1,7 @@
-import { Select, Form } from 'antd';
-import { cabinTypeList, select } from '../constants.ts';
+import { Select } from 'antd';
+import { cabinTypeList } from '../constants.ts';
 
-const Cabin = ({ dataFromDump }: { data: any[] | undefined }) => {
-  console.log(dataFromDump);
+const Cabin = ({ dataFromDump }: { dataFromDump: any[] | undefined }) => {
   return (
     <div className="flex items-center justify-center flex-col gap-y-4">
       <h1>Cabin</h1>

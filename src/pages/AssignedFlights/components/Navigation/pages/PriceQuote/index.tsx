@@ -2,17 +2,19 @@ import { useParams } from 'react-router-dom';
 
 import Loader from '@components/Loader';
 import useGetOffers from '@hooks/useGetOffers.ts';
-import { FloatButton, Table } from 'antd';
+import { FloatButton, Form, Table } from 'antd';
 import { useTableColumns } from './constants.tsx';
 import { PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { CreatePriceQuoteDrawer } from './components';
 
 const PriceQuote = () => {
-  const id = useParams().id as string;
-  const { offers, isLoading } = useGetOffers(id);
-  const columns = useTableColumns();
+  const [form] = Form.useForm();
   const [drawerState, setDrawerState] = useState(false);
+  const id = useParams().id as string;
+  const { offers, isLoading, setPerPage, setPage, page, per_page } = useGetOffers(id);
+
+  const columns = useTableColumns(setDrawerState, form);
 
   if (isLoading) {
     return (
@@ -24,8 +26,29 @@ const PriceQuote = () => {
 
   return (
     <div className="overflow-hidden rounded-md bg-white shadow">
-      <Table columns={columns} dataSource={offers} scroll={{ x: 1300 }} pagination={false} />
-      <CreatePriceQuoteDrawer setDrawerState={setDrawerState} drawerState={drawerState} />
+      <Table
+        columns={columns}
+        dataSource={offers?.data.data}
+        scroll={{ x: 1300 }}
+        pagination={{
+          position: ['bottomLeft'],
+          current: page,
+          pageSize: per_page,
+          total: offers?.data.meta.total,
+          showSizeChanger: true,
+          onChange: (page, perPage) => {
+            setPerPage(perPage);
+            setPage(page);
+          },
+        }}
+      />
+      {drawerState && (
+        <CreatePriceQuoteDrawer
+          setDrawerState={setDrawerState}
+          drawerState={drawerState}
+          form={form}
+        />
+      )}
       <FloatButton
         type="primary"
         shape="circle"

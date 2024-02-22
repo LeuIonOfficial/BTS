@@ -1,5 +1,5 @@
 import { Select, Form } from 'antd';
-import { SALETYPE, saleTypeOptions } from '../constants.ts';
+import { saleTypeOptions } from '../constants.ts';
 
 const SaleType = () => {
   return (

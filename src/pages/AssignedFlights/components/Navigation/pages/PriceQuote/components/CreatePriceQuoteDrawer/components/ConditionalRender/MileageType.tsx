@@ -1,18 +1,22 @@
 import { Col, Form, InputNumber, Row, Select } from 'antd';
-import { fareTypeOptions, SALETYPE } from '../../constants';
+import { SALETYPE } from '../../constants';
+import useGetMilesPrices from '@hooks/useGetMilesPrices';
 import { NamePath } from 'antd/lib/form/interface';
 
-// Reusable component for passenger input fields
+// Reusable component for input fields
 const PassengerInputFields = ({ passengerType }: { passengerType: string }) => (
   <div className="flex flex-row gap-x-4">
     <Form.Item>
       <InputNumber addonAfter="Selling Price" placeholder={passengerType}></InputNumber>
     </Form.Item>
     <Form.Item>
-      <InputNumber addonAfter="Net Price" placeholder={passengerType}></InputNumber>
+      <InputNumber addonAfter="Miles" placeholder={passengerType}></InputNumber>
     </Form.Item>
     <Form.Item>
-      <InputNumber addonAfter="Fare Price" placeholder={passengerType}></InputNumber>
+      <InputNumber addonAfter="Taxes" placeholder={passengerType}></InputNumber>
+    </Form.Item>
+    <Form.Item>
+      <InputNumber addonAfter="Net Price" readOnly placeholder={'Autofilled'}></InputNumber>
     </Form.Item>
     <Form.Item>
       <InputNumber addonAfter="Gross Profit" readOnly placeholder={'Autofilled'}></InputNumber>
@@ -20,7 +24,9 @@ const PassengerInputFields = ({ passengerType }: { passengerType: string }) => (
   </div>
 );
 
-const FareType = () => {
+const MileageType = () => {
+  const { data } = useGetMilesPrices();
+
   return (
     <Form.Item
       noStyle
@@ -29,16 +35,16 @@ const FareType = () => {
       }
     >
       {({ getFieldValue }) =>
-        getFieldValue('sale-type' as NamePath) === SALETYPE.REVENUE ? (
+        getFieldValue('sale-type' as NamePath) === SALETYPE.AWARD ? (
           <Row gutter={[12, 12]}>
             <Col span={24}>
               <div className="flex flex-col gap-y-2">
-                <h1>Fare Type</h1>
-                <Form.Item name="fare-type">
+                <h1>Mileage Type</h1>
+                <Form.Item name="mileage-type">
                   <Select>
-                    {fareTypeOptions.map((option) => (
-                      <Select.Option value={option.value} key={option.value}>
-                        {option.label}
+                    {data?.map((item, index) => (
+                      <Select.Option value={item.name} key={index}>
+                        {item.name}
                       </Select.Option>
                     ))}
                   </Select>
@@ -88,4 +94,4 @@ const FareType = () => {
   );
 };
 
-export default FareType;
+export default MileageType;

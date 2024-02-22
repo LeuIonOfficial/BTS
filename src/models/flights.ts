@@ -11,6 +11,7 @@ export interface GetFlightsType {
   client_id: number;
   comment: string;
   created_at: string;
+  direction?: string;
   details: IFlightDetails[];
   id: number;
   ip_address: string;

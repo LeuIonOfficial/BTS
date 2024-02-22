@@ -7,6 +7,7 @@ import useGetClientById from '@hooks/useGetClientById.ts';
 import Loader from '@components/Loader';
 import useGetUserById from '@hooks/useGetUserById.ts';
 import { useGetPageObject } from './components/Navigation/constants.tsx';
+import useGetOffers from '@hooks/useGetOffers.ts';
 
 const items = [
   { id: 1, content: ClientInfo },
@@ -24,6 +25,7 @@ const AssignedFlights = () => {
   const { clientDetails, isLoading: isClientDataLoading } = useGetClientById(
     flightDetails?.client_id,
   );
+  useGetOffers(id);
   const { userDetails, isLoading: isUserDetailsLoading } = useGetUserById(flightDetails?.user_id);
 
   if (isFlightLoading || isClientDataLoading || isUserDetailsLoading) {

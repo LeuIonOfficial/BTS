@@ -2,6 +2,7 @@ import routes from '@routes/routes.ts';
 import { generatePath, NavLink, useParams } from 'react-router-dom';
 
 import { useTabs, classNames } from './constants.tsx';
+import { Badge } from 'antd';
 
 export default function Navigation() {
   const { id } = useParams();
@@ -40,11 +41,18 @@ export default function Navigation() {
                       isActive
                         ? 'border-[#059e9b] text-[#059e9b]'
                         : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                      'whitespace-nowrap border-b-2 px-1 pb-3 text-sm font-medium',
+                      'whitespace-nowrap border-b-2 px-2 pb-3 text-sm font-medium',
                     )
                   }
                 >
-                  {tab.name}
+                  <Badge
+                    count={tab.badge}
+                    color={'blue'}
+                    offset={[13, -5]}
+                    className="hover:pointer-events-none"
+                  >
+                    {tab.name}
+                  </Badge>
                 </NavLink>
               ))}
             </nav>

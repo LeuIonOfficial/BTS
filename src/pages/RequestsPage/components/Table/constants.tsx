@@ -36,7 +36,8 @@ export const useTableColumns = () => {
 
       title: 'Trip Type',
       render: (_: unknown, record: GetFlightsType) => {
-        return <span>{`${record.details.length > 1 ? 'RT' : 'OW'}`}</span>;
+        // TODO: to check they key which came from back and to implement direction render
+        return <span>{!!record?.direction ? record?.direction : record.details[0].direction}</span>;
       },
       width: '5%',
     },

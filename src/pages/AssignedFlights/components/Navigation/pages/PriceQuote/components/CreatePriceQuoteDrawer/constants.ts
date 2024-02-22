@@ -1,4 +1,6 @@
 import { CabinType } from '@helpers/FlightClass';
+import useGetMilesPrices from '@hooks/useGetMilesPrices.ts';
+import { MilesPrice } from './components/ConditionalRender/ProgramType';
 
 export enum SALETYPE {
   REVENUE = 'Revenue',
@@ -40,4 +42,21 @@ export const cabinTypeList = [
   CabinType.PREMIUM_ECONOMY,
 ];
 
-export const select = ['', '', '', ''];
+export const select = ['mock data', 'mock data', 'mock data', 'mock data'];
+
+export const removeDublicates = (data: MilesPrice) => {
+  // Convert to array to filter
+  const dataArray = Object.values(data);
+
+  // Filter out duplicates by value
+  const uniqueByValue = dataArray.reduce((acc, current) => {
+    const x = acc.find((item: MilesPrice) => item.value === current.value);
+    if (!x) {
+      return current;
+    } else {
+      return acc;
+    }
+  }, []) as [{ label: string; value: string }];
+
+  return uniqueByValue;
+};

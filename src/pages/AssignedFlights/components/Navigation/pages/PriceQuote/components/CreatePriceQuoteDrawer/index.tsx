@@ -1,4 +1,4 @@
-import { Button, Checkbox, Col, Drawer, Form, Input, Row, Select, Space } from 'antd';
+import { Button, Drawer, FormInstance, Space } from 'antd';
 import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import PQForm from './components/Form.tsx';
 
@@ -7,16 +7,16 @@ interface IProps {
   drawerState: boolean;
   setDrawerState: Dispatch<SetStateAction<boolean>>;
   data?: any;
+  form?: FormInstance;
 }
 
-const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, data }) => {
-  const [form] = Form.useForm();
-
+const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, form, data }) => {
   const drawerProps = {
     forceRender: true,
     open: drawerState,
     onClose: () => {
       setDrawerState(false);
+      form?.resetFields();
     },
     width: '1000px',
     maskClosable: true,
@@ -36,7 +36,7 @@ const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, data 
           htmlType="submit"
           className="submit-button"
           onClick={() => {
-            form.submit();
+            form?.submit();
           }}
         >
           Submit
@@ -46,7 +46,7 @@ const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, data 
   };
   return (
     <Drawer {...drawerProps}>
-      <PQForm form={form} />
+      <PQForm form={form!} />
     </Drawer>
   );
 };

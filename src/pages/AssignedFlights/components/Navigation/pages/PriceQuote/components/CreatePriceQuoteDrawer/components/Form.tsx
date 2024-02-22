@@ -1,44 +1,42 @@
-import { Col, Form, FormInstance, Input, Row } from 'antd';
+import { Col, Form, FormInstance, Row } from 'antd';
 import Header from './Header.tsx';
 import Dump from './Dump.tsx';
 import Cabin from './Cabin.tsx';
-import ProgramType from './ConditionalRender/ProgramType.tsx';
+import ProgramType, { MilesPrice } from './ConditionalRender/ProgramType.tsx';
 import SaleType from './SaleType.tsx';
 import FareType from './ConditionalRender/FareType.tsx';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import { GetFlightsType } from '@models/flights.ts';
 import { AxiosResponse } from 'axios';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import Comments from './Comments.tsx';
 import useGetDump from '@hooks/useGetDump.ts';
+import MileageType from './ConditionalRender/MileageType.tsx';
+import { removeDublicates } from '../constants.ts';
+import MixTypeCalculations from './ConditionalRender/MixTypeCalculations.tsx';
 
 const PQForm = ({ form }: { form: FormInstance }) => {
-  const queryClient = useQueryClient();
+  const [programType, setProgramType] = useState<MilesPrice>({});
   const { postGetDump, response } = useGetDump();
-  const flight: GetFlightsType = queryClient.getQueryData<AxiosResponse>(['flightDetails'])?.data
-    .data;
-  const passengers = useMemo(() => {
-    return {
-      adults: flight?.details[0]?.adults,
-      child: flight?.details[0]?.child,
-      infants: flight?.details[0]?.adults,
-    };
-  }, [flight]);
+  const flight: GetFlightsType = useQueryClient().getQueryData<AxiosResponse>(['flightDetails'])
+    ?.data.data;
+
+  const dataForMixType = removeDublicates(programType);
 
   return (
     <Form className="flex flex-col gap-y-2" form={form} onFinish={(values) => console.log(values)}>
       <Row gutter={[12, 12]}>
-        <Col span={24}>
-          <Header passengers={passengers} />
-        </Col>
+        <Col span={24}>{<Header />}</Col>
       </Row>
       <Row gutter={[12, 12]}>
         <Col span={12}>
-          <Dump flightId={flight.id} postGetDump={postGetDump} />
+          <Dump flightId={flight.id} postGetDump={postGetDump} form={form} />
         </Col>
-        <Col span={6}>{response?.data && <Cabin dataFromDump={response.data} />}</Col>
+        <Col span={6}>{response?.data?.length > 0 && <Cabin dataFromDump={response?.data} />}</Col>
         <Col span={6}>
-          <ProgramType />
+          {response?.data && (
+            <ProgramType dataFromDump={response.data} setProgramType={setProgramType} />
+          )}
         </Col>
       </Row>
       <Row gutter={[12, 12]}>
@@ -47,7 +45,9 @@ const PQForm = ({ form }: { form: FormInstance }) => {
         </Col>
       </Row>
 
-      <FareType passengers={passengers} />
+      <FareType />
+      <MileageType />
+      <MixTypeCalculations data={dataForMixType} />
 
       <Row gutter={[12, 12]}>
         <Col span={24}>
