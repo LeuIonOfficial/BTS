@@ -45,18 +45,19 @@ export const cabinTypeList = [
 export const select = ['mock data', 'mock data', 'mock data', 'mock data'];
 
 export const removeDublicates = (data: MilesPrice) => {
+  console.log(data, 'data');
   // Convert to array to filter
   const dataArray = Object.values(data);
 
   // Filter out duplicates by value
-  const uniqueByValue = dataArray.reduce((acc, current) => {
+  const uniqueByValue = dataArray.reduce((acc: MilesPrice[], current: MilesPrice) => {
     const x = acc.find((item: MilesPrice) => item.value === current.value);
     if (!x) {
-      return current;
+      return [...acc, current];
     } else {
       return acc;
     }
-  }, []) as [{ label: string; value: string }];
+  }, []);
 
   return uniqueByValue;
 };

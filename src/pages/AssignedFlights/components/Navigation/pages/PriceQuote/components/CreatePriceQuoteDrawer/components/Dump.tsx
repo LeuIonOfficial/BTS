@@ -1,6 +1,7 @@
 import TextArea from 'antd/es/input/TextArea';
 import { Form, FormInstance } from 'antd';
 import { useEffect, useState } from 'react';
+import { NamePath } from 'antd/lib/form/interface';
 
 const Dump = ({
   flightId,
@@ -11,7 +12,7 @@ const Dump = ({
   postGetDump: (data: { flightId: number; data: { dump: string } }) => void;
   form: FormInstance;
 }) => {
-  const [content, setContent] = useState(form.getFieldValue('dump'));
+  const [content, setContent] = useState(form.getFieldValue('dump' as NamePath));
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);

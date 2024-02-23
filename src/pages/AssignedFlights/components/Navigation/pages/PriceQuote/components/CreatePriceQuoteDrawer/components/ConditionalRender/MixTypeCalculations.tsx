@@ -1,6 +1,7 @@
 import { Col, Form, Input, Row, Typography } from 'antd';
 import { SALETYPE } from '../../constants';
 import { NamePath } from 'antd/lib/form/interface';
+import { MilesPrice } from './ProgramType';
 
 const PassengerInputRow = ({
   passengerType,
@@ -31,7 +32,8 @@ const PassengerInputRow = ({
   </Row>
 );
 
-const MixTypeCalculations = ({ data }: { data: { label: string; value: string }[] }) => {
+const MixTypeCalculations = ({ data }: { data: MilesPrice[] }) => {
+  console.log(data, 'data')
   return (
     <Form.Item
       noStyle
@@ -42,7 +44,7 @@ const MixTypeCalculations = ({ data }: { data: { label: string; value: string }[
       {({ getFieldValue }) =>
         getFieldValue('sale-type' as NamePath) === SALETYPE.MIX ? (
           <div className="flex flex-col gap-y-4">
-            {data?.map(({ label, value }: { label: string; value: string }, index: number) => {
+            {data?.map(({ label, value }, index) => {
               if (value === 'Revenue Option') {
                 return (
                   <Row gutter={[12, 12]} key={index}>
