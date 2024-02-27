@@ -1,18 +1,28 @@
 import { Col, Form, InputNumber, Row, Select } from 'antd';
 import { fareTypeOptions, SALETYPE } from '../../constants';
 import { NamePath } from 'antd/lib/form/interface';
+import { capitalizeFirstLetter } from '@helpers/functions';
 
 // Reusable component for passenger input fields
 const PassengerInputFields = ({ passengerType }: { passengerType: string }) => (
   <div className="flex flex-row gap-x-4">
     <Form.Item>
-      <InputNumber addonAfter="Selling Price" placeholder={passengerType}></InputNumber>
+      <InputNumber
+        addonAfter="Selling Price"
+        placeholder={capitalizeFirstLetter(passengerType)}
+      ></InputNumber>
     </Form.Item>
     <Form.Item>
-      <InputNumber addonAfter="Net Price" placeholder={passengerType}></InputNumber>
+      <InputNumber
+        addonAfter="Net Price"
+        placeholder={capitalizeFirstLetter(passengerType)}
+      ></InputNumber>
     </Form.Item>
-    <Form.Item>
-      <InputNumber addonAfter="Fare Price" placeholder={passengerType}></InputNumber>
+    <Form.Item name={`total_fare_price_${passengerType}`}>
+      <InputNumber
+        addonAfter="Fare Price"
+        placeholder={capitalizeFirstLetter(passengerType)}
+      ></InputNumber>
     </Form.Item>
     <Form.Item>
       <InputNumber addonAfter="Gross Profit" readOnly placeholder={'Autofilled'}></InputNumber>
@@ -51,7 +61,7 @@ const FareType = () => {
                 >
                   {({ getFieldValue }) =>
                     getFieldValue('adults' as NamePath) > 0 ? (
-                      <PassengerInputFields passengerType="Adult" />
+                      <PassengerInputFields passengerType="adult" />
                     ) : null
                   }
                 </Form.Item>
@@ -63,7 +73,7 @@ const FareType = () => {
                 >
                   {({ getFieldValue }) =>
                     getFieldValue('child' as NamePath) > 0 ? (
-                      <PassengerInputFields passengerType="Child" />
+                      <PassengerInputFields passengerType="child" />
                     ) : null
                   }
                 </Form.Item>
@@ -75,7 +85,7 @@ const FareType = () => {
                 >
                   {({ getFieldValue }) =>
                     getFieldValue('infants' as NamePath) > 0 ? (
-                      <PassengerInputFields passengerType="Infants" />
+                      <PassengerInputFields passengerType="infant" />
                     ) : null
                   }
                 </Form.Item>

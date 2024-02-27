@@ -33,7 +33,6 @@ const PassengerInputRow = ({
 );
 
 const MixTypeCalculations = ({ data }: { data: MilesPrice[] }) => {
-  console.log(data, 'data')
   return (
     <Form.Item
       noStyle
@@ -61,7 +60,7 @@ const MixTypeCalculations = ({ data }: { data: MilesPrice[] }) => {
               }
 
               return (
-                <Row gutter={[12, 12]}>
+                <Row gutter={[12, 12]} key={index}>
                   <Col span={6} className="flex items-center">
                     <Typography>{label}</Typography>
                   </Col>

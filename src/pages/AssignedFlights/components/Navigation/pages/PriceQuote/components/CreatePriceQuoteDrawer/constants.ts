@@ -45,7 +45,6 @@ export const cabinTypeList = [
 export const select = ['mock data', 'mock data', 'mock data', 'mock data'];
 
 export const removeDublicates = (data: MilesPrice) => {
-  console.log(data, 'data');
   // Convert to array to filter
   const dataArray = Object.values(data);
 

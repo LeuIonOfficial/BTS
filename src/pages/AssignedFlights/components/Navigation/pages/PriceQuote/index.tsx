@@ -8,11 +8,14 @@ import { PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { CreatePriceQuoteDrawer } from './components';
 
+export type DrawerState = 'closed' | 'create' | 'update';
+
 const PriceQuote = () => {
   const [form] = Form.useForm();
-  const [drawerState, setDrawerState] = useState(false);
+  const [drawerState, setDrawerState] = useState<'closed' | 'create' | 'update'>('closed');
   const id = useParams().id as string;
   const { offers, isLoading, setPerPage, setPage, page, per_page } = useGetOffers(id);
+  console.log('offers', offers?.data.data);
 
   const columns = useTableColumns(setDrawerState, form);
 
@@ -42,7 +45,7 @@ const PriceQuote = () => {
           },
         }}
       />
-      {drawerState && (
+      {!(drawerState === 'closed') && (
         <CreatePriceQuoteDrawer
           setDrawerState={setDrawerState}
           drawerState={drawerState}
@@ -54,7 +57,7 @@ const PriceQuote = () => {
         shape="circle"
         className="float-button"
         onClick={() => {
-          setDrawerState(true);
+          setDrawerState('create');
         }}
         icon={
           <div className="flex items-center justify-center ">

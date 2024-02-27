@@ -2,9 +2,10 @@ import { PriceQuoteType } from '@models/priceQuote.ts';
 import TextArea from 'antd/es/input/TextArea';
 import { Button, FormInstance, Switch } from 'antd';
 import { Dispatch, SetStateAction } from 'react';
+import { DrawerState } from '.';
 
 export const useTableColumns = (
-  setDrawerState: Dispatch<SetStateAction<boolean>>,
+  setDrawerState: Dispatch<SetStateAction<DrawerState>>,
   form: FormInstance,
 ) => {
   return [
@@ -56,7 +57,7 @@ export const useTableColumns = (
                 const adults = !!record.details[0].adults;
                 const child = !!record.details[0].child;
                 const infants = !!record.details[0].infants;
-                setDrawerState(true),
+                setDrawerState('update'),
                   form.setFieldsValue({
                     dump: record.dump,
                     'sale-type': record.packageable.name,
@@ -64,6 +65,10 @@ export const useTableColumns = (
                     adults: adults && record.details[0].adults,
                     child: child && record.details[0].child,
                     infants: infants && record.details[0].infants,
+                    total_fare_price: record.packageable.total_fare_price,
+                    total_fare_price_adult: record.packageable.total_fare_price_adult,
+                    total_fare_price_child: record.packageable.total_fare_price_child,
+                    total_fare_price_infant: record.packageable.total_fare_price_infant,
                   });
               }}
             >

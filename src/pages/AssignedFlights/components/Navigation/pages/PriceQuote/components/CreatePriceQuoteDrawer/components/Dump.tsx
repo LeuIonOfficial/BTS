@@ -19,7 +19,9 @@ const Dump = ({
   };
 
   useEffect(() => {
-    postGetDump({ flightId, data: { dump: content } });
+    if (content) {
+      postGetDump({ flightId, data: { dump: content } });
+    }
   }, [content]);
 
   return (
