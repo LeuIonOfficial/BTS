@@ -23,7 +23,7 @@ const CustomTable: React.FC<{
                 columns={columns}
                 size="large"
                 tableLayout="fixed"
-                dataSource={users?.data}
+                dataSource={[users?.data]}
                 pagination={{
                   position: ['bottomLeft'],
                   current: page,

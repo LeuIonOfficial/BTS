@@ -8,7 +8,7 @@ interface IProps {
   data?: any;
 }
 
-const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState, data }) => {
+const CreatePriceQuoteDrawer: FC<IProps> = ({ drawerState, setDrawerState }) => {
   return (
     <Drawer
       forceRender

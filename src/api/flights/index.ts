@@ -1,12 +1,7 @@
 import { AxiosResponse } from 'axios';
 
 import { $api } from '@api/http';
-import {
-  GetFlightsParamsType,
-  GetFlightsType,
-  IFlightDetails,
-  PostFlightType,
-} from '@models/flights.ts';
+import { GetFlightsParamsType, GetFlightsType, PostFlightType } from '@models/flights.ts';
 import { ServerResponseType } from '@models/serverResponse.ts';
 import { notification } from 'antd';
 
