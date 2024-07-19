@@ -33,4 +33,8 @@ export class Flights {
     }
     return response;
   }
+
+  async getPostDump(flightId: string, data: { 'use-api': boolean; dump: string }) {
+    return $api.post(`/api/offers/${flightId}/dump`, data).catch((e) => Promise.reject(e));
+  }
 }

@@ -6,22 +6,20 @@ import { UserOutlined } from '@ant-design/icons';
 import { Fragment } from 'react';
 
 const FlightDetailsSection = (props: { flightDetails: GetFlightsType }) => {
-  const { details } = { ...props.flightDetails };
+  const { details } = props.flightDetails;
 
   return (
     <div className="flex space-x-4 items-center">
-      <div className="flex space-x-4">
-        <Badge count={details.length} color="blue">
-          <Avatar shape="circle" size="large" style={{ backgroundColor: '#059e9b', color: '#fff' }}>
-            {details.length > 1 ? 'RT' : 'OW'}
-          </Avatar>
-        </Badge>
-        <Badge count={1} color="blue">
-          <Avatar shape="circle" size="large" style={{ backgroundColor: '#059e9b', color: '#fff' }}>
-            <UserOutlined />
-          </Avatar>
-        </Badge>
-      </div>
+      <Badge count={details.length} color="blue">
+        <Avatar shape="circle" size="large" style={{ backgroundColor: '#059e9b', color: '#fff' }}>
+          {details.length > 1 ? 'RT' : 'OW'}
+        </Avatar>
+      </Badge>
+      <Badge count={details[0].adults + details[0].child + details[0].infants} color="blue">
+        <Avatar shape="circle" size="large" style={{ backgroundColor: '#059e9b', color: '#fff' }}>
+          <UserOutlined />
+        </Avatar>
+      </Badge>
       {details.map((flight, index) => (
         <Fragment key={index}>
           <Divider type="vertical" className="h-[30px] font-xl" />

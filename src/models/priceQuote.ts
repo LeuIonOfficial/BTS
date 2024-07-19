@@ -9,7 +9,7 @@ export type PriceQuoteType = {
   hash: string;
   comment: string;
   dump: string;
-  details: IFlightDetails;
+  details: IFlightDetails[];
   created_at: string;
   packageable: {
     id: number;

@@ -54,15 +54,20 @@ export const useGetPageObject: () => {
   };
 };
 
-export const useTabs = (): { name: string; href: string; key: string }[] => {
+export const useTabs = (): { name: string; href: string; key: string; badge?: number }[] => {
+  const flight: GetFlightsType = useQueryClient().getQueryData<AxiosResponse>(['flightDetails'])
+    ?.data.data;
+  const offersLength = (useQueryClient().getQueryData(['offers', 1, 10]) as {
+    data: { meta: { total: number } };
+  }).data.meta.total;
   return [
     {
       key: '1',
       name: 'Client Request',
       href: 'client-request',
     },
-    { name: 'Flight Details', href: 'flight-details', key: '2' },
-    { name: 'Price Quote', href: 'price-quote', key: '3' },
+    { name: 'Flight Details', href: 'flight-details', key: '2', badge: flight.details.length },
+    { name: 'Price Quote', href: 'price-quote', key: '3', badge: offersLength },
     { name: 'Follow Up', href: 'follow-up', key: '4' },
   ];
 };

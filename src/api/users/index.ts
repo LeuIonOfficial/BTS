@@ -18,7 +18,6 @@ export class Users {
 
   async postUser(data: PostUserType) {
     const response = await $api.post('/api/users', data).catch((e) => {
-      console.log(e);
       return e;
     });
     if (response.status >= 200 && response.status < 300) {

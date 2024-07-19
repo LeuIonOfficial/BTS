@@ -2,17 +2,22 @@ import { useParams } from 'react-router-dom';
 
 import Loader from '@components/Loader';
 import useGetOffers from '@hooks/useGetOffers.ts';
-import { FloatButton, Table } from 'antd';
+import { FloatButton, Form, Table } from 'antd';
 import { useTableColumns } from './constants.tsx';
 import { PlusOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { CreatePriceQuoteDrawer } from './components';
 
+export type DrawerState = 'closed' | 'create' | 'update';
+
 const PriceQuote = () => {
+  const [form] = Form.useForm();
+  const [drawerState, setDrawerState] = useState<'closed' | 'create' | 'update'>('closed');
   const id = useParams().id as string;
-  const { offers, isLoading } = useGetOffers(id);
-  const columns = useTableColumns();
-  const [drawerState, setDrawerState] = useState(false);
+  const { offers, isLoading, setPerPage, setPage, page, per_page } = useGetOffers(id);
+  console.log('offers', offers?.data.data);
+
+  const columns = useTableColumns(setDrawerState, form);
 
   if (isLoading) {
     return (
@@ -24,14 +29,35 @@ const PriceQuote = () => {
 
   return (
     <div className="overflow-hidden rounded-md bg-white shadow">
-      <Table columns={columns} dataSource={offers} scroll={{ x: 1300 }} pagination={false} />
-      <CreatePriceQuoteDrawer setDrawerState={setDrawerState} drawerState={drawerState} />
+      <Table
+        columns={columns}
+        dataSource={offers?.data.data}
+        scroll={{ x: 1300 }}
+        pagination={{
+          position: ['bottomLeft'],
+          current: page,
+          pageSize: per_page,
+          total: offers?.data.meta.total,
+          showSizeChanger: true,
+          onChange: (page, perPage) => {
+            setPerPage(perPage);
+            setPage(page);
+          },
+        }}
+      />
+      {!(drawerState === 'closed') && (
+        <CreatePriceQuoteDrawer
+          setDrawerState={setDrawerState}
+          drawerState={drawerState}
+          form={form}
+        />
+      )}
       <FloatButton
         type="primary"
         shape="circle"
         className="float-button"
         onClick={() => {
-          setDrawerState(true);
+          setDrawerState('create');
         }}
         icon={
           <div className="flex items-center justify-center ">
