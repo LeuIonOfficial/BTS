@@ -3,7 +3,6 @@ import { ConfigProvider } from 'antd';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import App from './App.tsx';
 import queryConfig from './api/reactQuery/index.ts';
 import './index.scss';
@@ -23,6 +22,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <App />
       </ConfigProvider>
     </BrowserRouter>
-    <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>,
 );

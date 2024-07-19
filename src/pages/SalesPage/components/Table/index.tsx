@@ -37,7 +37,7 @@ const CustomTable = () => {
               scroll={{ x: 1300 }}
               sticky={true}
               rowSelection={{ type: 'checkbox' }}
-              size="large "
+              size="large"
               tableLayout="fixed"
               dataSource={props.sales?.data || []}
               columns={columns}

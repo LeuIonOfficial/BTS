@@ -4,6 +4,7 @@ import path from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/BTS/',
   resolve: {
     alias: {
       '@request': path.resolve(__dirname, './src/api/http'),
